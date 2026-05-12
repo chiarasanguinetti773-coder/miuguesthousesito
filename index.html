@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miù Guest House — Castelli Romani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D2240;
+  --navy-mid: #1A3A5C;
+  --navy-light: #2A5FA8;
+  --white: #FFFFFF;
+  --off-white: #F7F9FC;
+  --light-gray: #EEF2F7;
+  --border: #D6E0ED;
+  --gold: #B8975A;
+  --gold-light: #D4AF7A;
+  --text-dark: #0A1828;
+  --text-mid: #2C4A6A;
+  --text-light: #6A88A4;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Raleway', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:300;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 4rem; height: 80px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; font-weight: 400; letter-spacing: 0.08em;
+  color: var(--navy); text-decoration: none; flex-shrink: 0;
+}
+.nav-logo span { font-style: italic; color: var(--gold); }
+.nav-links { display: flex; align-items: center; list-style: none; }
+.nav-links li a {
+  display: block; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;
+  color: var(--text-mid); text-decoration: none; padding: 0.5rem 1rem;
+  position: relative; transition: color 0.3s;
+}
+.nav-links li a::after {
+  content: ''; position: absolute; bottom: 0; left: 1rem; right: 1rem;
+  height: 1px; background: var(--navy); transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links li a:hover, .nav-links li a.active { color: var(--navy); }
+.nav-links li a:hover::after, .nav-links li a.active::after { transform: scaleX(1); }
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 0.3rem;
+}
+.nav-burger span { display: block; width: 22px; height: 1px; background: var(--navy); transition: transform 0.3s, opacity 0.3s; }
+.nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.nav-mobile {
+  display: none; position: fixed; top: 80px; left:0; right:0;
+  background: var(--white); border-top: 1px solid var(--border);
+  z-index: 290; padding: 1.5rem 2rem 2rem; flex-direction: column;
+  box-shadow: 0 8px 32px rgba(13,34,64,0.1);
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;
+  color: var(--text-mid); text-decoration: none;
+  padding: 0.9rem 0; border-bottom: 1px solid var(--border); transition: color 0.3s;
+}
+.nav-mobile a:hover { color: var(--navy); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; height: 100vh; min-height: 600px;
+  display: flex; align-items: flex-end; overflow: hidden;
+  margin-top: 80px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, #0D2240 0%, #1A3A5C 50%, #2A5FA8 100%);
+  /* SOSTITUISCI CON: background: url('img/hero.jpg') center/cover no-repeat; */
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,24,40,0.85) 0%, rgba(10,24,40,0.2) 60%, transparent 100%);
+}
+.hero-ph {
+  position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; pointer-events: none;
+}
+.hero-ph span { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.15); border: 1px dashed rgba(255,255,255,0.1); padding: 0.5rem 1rem; }
+.hero-content {
+  position: relative; z-index: 2; padding: 0 5rem 5rem; max-width: 680px;
+  animation: fadeUp 1s 0.15s ease both;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.hero-eyebrow {
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 500;
+  color: var(--gold-light); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.hero-eyebrow::before { content:''; display:block; width:32px; height:1px; background:var(--gold); }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 5vw, 4.8rem); font-weight: 400; line-height: 1.1;
+  color: var(--white); margin-bottom: 1.4rem;
+}
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero-desc { font-size: 0.98rem; font-weight: 300; line-height: 1.9; color: rgba(255,255,255,0.72); margin-bottom: 2.2rem; max-width: 440px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.btn-white { background: var(--white); color: var(--navy); padding: 0.9rem 2rem; text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; transition: background 0.3s; }
+.btn-white:hover { background: var(--off-white); }
+.btn-ghost-white { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 1px; transition: color 0.3s, border-color 0.3s; }
+.btn-ghost-white:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+/* ── HELPERS ── */
+.section-label {
+  font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500;
+  color: var(--navy-light); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.section-label::before { content:''; display:block; width:24px; height:1px; background:var(--navy-light); }
+.section-label.gold { color: var(--gold); }
+.section-label.gold::before { background: var(--gold); }
+.ph { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.2); border: 1px dashed rgba(255,255,255,0.15); padding: 0.45rem 0.9rem; font-family: 'Raleway', sans-serif; }
+.ph.on-light { color: rgba(13,34,64,0.2); border-color: rgba(13,34,64,0.15); }
+
+/* ── HOME ── */
+#home { padding: 6rem 5rem; background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.home-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem,3.2vw,2.8rem); font-weight: 400; line-height: 1.2; color: var(--navy); margin-bottom: 1.4rem; }
+.home-text h2 em { font-style: italic; color: var(--gold); }
+.home-text p { font-size: 0.9rem; font-weight: 300; line-height: 2; color: var(--text-light); margin-bottom: 0.8rem; }
+.home-text .signature { margin-top: 1.8rem; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 1rem; color: var(--gold); }
+.home-image { aspect-ratio: 4/3; background: linear-gradient(145deg, #2A5FA8, #0D2240); display: flex; align-items: center; justify-content: center;
+/* SOSTITUISCI CON: background: url('img/zona.jpg') center/cover; */ }
+
+/* Zona strip */
+.zona-strip { background: var(--navy); padding: 3.5rem 5rem; display: grid; grid-template-columns: repeat(4,1fr); }
+.zona-item { padding: 0 2rem 0 0; border-right: 1px solid rgba(255,255,255,0.08); transition: background 0.3s; }
+.zona-item:last-child { border-right: none; padding-right: 0; padding-left: 2rem; }
+.zona-item:nth-child(2), .zona-item:nth-child(3) { padding: 0 2rem; }
+.zona-num { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:400; color:rgba(184,151,90,0.2); line-height:1; margin-bottom:0.6rem; }
+.zona-item h4 { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:400; color:var(--gold-light); margin-bottom:0.3rem; }
+.zona-item p { font-size:0.75rem; font-weight:300; color:rgba(255,255,255,0.45); line-height:1.7; }
+.zona-dist { margin-top:0.5rem; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(184,151,90,0.5); font-weight:500; }
+
+/* ── CAMERE ── */
+#camere { padding: 7rem 5rem; background: var(--off-white); }
+.camere-section-header { margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
+.camere-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; color:var(--navy); }
+.camere-section-header p { font-size:0.85rem; font-weight:300; color:var(--text-light); max-width:360px; text-align:right; line-height:1.8; }
+
+/* Griglia 3 colonne */
+.rooms-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+.room-card {
+  background: var(--white); cursor: pointer; overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.room-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,34,64,0.12); }
+.room-card-photo {
+  aspect-ratio: 3/2; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.room-card-photo-inner {
+  width:100%; height:100%; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+  display: flex; align-items: center; justify-content: center;
+}
+.room-card:hover .room-card-photo-inner { transform: scale(1.04); }
+.rc1 { background: linear-gradient(145deg, #1A3A5C, #0D2240); }
+.rc2 { background: linear-gradient(145deg, #2A5FA8, #1A3A5C); }
+.rc3 { background: linear-gradient(145deg, #3A6FA8, #1E4A80); }
+.rc4 { background: linear-gradient(145deg, #1E4070, #0D2240); }
+.rc5 { background: linear-gradient(145deg, #2A4A8A, #152A54); }
+.rc6 { background: linear-gradient(145deg, #162E52, #0A1E38); }
+.room-card-body { padding: 1.6rem 1.8rem 2rem; }
+.room-card-tag { font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--gold); margin-bottom:0.4rem; }
+.room-card-body h3 { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; color:var(--navy); margin-bottom:0.5rem; }
+.room-card-body p { font-size:0.78rem; font-weight:300; color:var(--text-light); line-height:1.7; margin-bottom:1.2rem; }
+.room-card-link {
+  font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500;
+  color:var(--navy); display:inline-flex; align-items:center; gap:0.4rem;
+  transition: gap 0.3s, color 0.3s;
+}
+.room-card:hover .room-card-link { gap:0.7rem; color:var(--gold); }
+.room-card-link::after { content:'→'; }
+
+/* ── MODAL CAMERA ── */
+.room-modal {
+  display: none; position: fixed; inset:0; z-index:400;
+  background: rgba(10,24,40,0.7); backdrop-filter: blur(6px);
+  align-items: flex-start; justify-content: center;
+  padding: 2rem; overflow-y: auto;
+}
+.room-modal.open { display: flex; }
+.room-modal-box {
+  background: var(--white); width: 100%; max-width: 860px;
+  position: relative; animation: modalIn 0.35s ease both;
+  margin: auto;
+}
+@keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.room-modal-close {
+  position: absolute; top:1.2rem; right:1.2rem; z-index:1;
+  background: rgba(255,255,255,0.9); border:1px solid var(--border); cursor:pointer;
+  width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+  font-size:1rem; color:var(--text-mid); transition:background 0.2s;
+}
+.room-modal-close:hover { background: var(--navy); color: var(--white); }
+.room-modal-photo {
+  aspect-ratio: 16/7; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.room-modal-body { padding: 2.5rem 3rem 3rem; }
+.room-modal-meta { display:flex; gap:2rem; margin-bottom:1.8rem; flex-wrap:wrap; }
+.room-modal-meta span { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--text-light); border-right:1px solid var(--border); padding-right:2rem; }
+.room-modal-meta span:last-child { border-right:none; }
+.room-modal-body h2 { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; color:var(--navy); margin-bottom:0.4rem; }
+.room-modal-body .room-modal-subtitle { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500; color:var(--gold); margin-bottom:1.5rem; display:block; }
+.room-modal-body p { font-size:0.88rem; font-weight:300; line-height:2; color:var(--text-mid); margin-bottom:0.8rem; }
+.room-modal-dotazioni { margin-top:1.8rem; }
+.room-modal-dotazioni h4 { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--navy); margin-bottom:1rem; }
+.dotazioni-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; }
+.dotazione { font-size:0.78rem; font-weight:300; color:var(--text-light); display:flex; align-items:center; gap:0.4rem; }
+.dotazione::before { content:''; display:block; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+
+/* ── PISCINA ── */
+#piscina { display:grid; grid-template-columns:1fr 1fr; min-height:520px; }
+.pool-photo { background: linear-gradient(145deg,#2A5FA8,#0D2240); display:flex; align-items:center; justify-content:center; min-height:460px;
+/* SOSTITUISCI CON: background: url('img/piscina.jpg') center/cover; */ }
+.pool-text { background:var(--navy); padding:5.5rem 5rem; display:flex; flex-direction:column; justify-content:center; }
+.pool-text h2 { font-family:'Playfair Display',serif; font-size:2.3rem; font-weight:400; color:var(--white); line-height:1.2; margin-bottom:1.4rem; }
+.pool-text h2 em { font-style:italic; color:var(--gold-light); }
+.pool-text p { font-size:0.88rem; font-weight:300; line-height:2; color:rgba(255,255,255,0.62); margin-bottom:0.7rem; }
+.pool-list { margin-top:1.8rem; list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:0.55rem; }
+.pool-list li { font-size:0.78rem; font-weight:300; color:rgba(255,255,255,0.7); display:flex; align-items:center; gap:0.5rem; }
+.pool-list li::before { content:''; display:block; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+
+/* Gallery strip */
+.gallery-strip { display:grid; grid-template-columns:repeat(5,1fr); height:240px; gap:2px; }
+.gs { overflow:hidden; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.gs-inner { width:100%; height:100%; transition:transform 0.5s ease; display:flex; align-items:center; justify-content:center; }
+.gs:hover .gs-inner { transform:scale(1.06); }
+.gs1 { background:linear-gradient(135deg,#0D2240,#1A3A5C); }
+.gs2 { background:linear-gradient(135deg,#1A3A5C,#2A5FA8); }
+.gs3 { background:linear-gradient(135deg,#2A5FA8,#3A6FA8); }
+.gs4 { background:linear-gradient(135deg,#B8975A,#D4AF7A); }
+.gs5 { background:linear-gradient(135deg,#0D2240,#2A5FA8); }
+.gs-label { font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.18); font-family:'Raleway',sans-serif; }
+
+/* ── SERVIZI ── */
+#servizi { padding:7rem 5rem; background:var(--white); }
+.servizi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--border); }
+.servizio-card { padding:2.8rem 2.4rem; border-right:1px solid var(--border); transition:background 0.3s; }
+.servizio-card:last-child { border-right:none; }
+.servizio-card:hover { background:var(--off-white); }
+.servizio-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:400; color:rgba(13,34,64,0.08); line-height:1; margin-bottom:1rem; }
+.servizio-card h3 { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:400; color:var(--navy); margin-bottom:1.2rem; border-bottom:1px solid var(--border); padding-bottom:1rem; }
+.servizio-list { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+.servizio-list li { font-size:0.78rem; font-weight:300; color:var(--text-light); line-height:1.6; display:flex; align-items:baseline; gap:0.5rem; }
+.servizio-list li::before { content:'—'; color:var(--border); font-size:0.55rem; flex-shrink:0; }
+
+/* ── CHI SIAMO ── */
+#chisiamo { padding:7rem 5rem; background:var(--off-white); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+.chisiamo-image { aspect-ratio:4/5; background:linear-gradient(145deg,#1A3A5C,#2A5FA8); display:flex; align-items:center; justify-content:center;
+/* SOSTITUISCI CON: background: url('img/team.jpg') center/cover; */ }
+.chisiamo-text h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; line-height:1.2; color:var(--navy); margin-bottom:1.5rem; }
+.chisiamo-text h2 em { font-style:italic; color:var(--gold); }
+.chisiamo-text p { font-size:0.88rem; font-weight:300; line-height:2; color:var(--text-light); margin-bottom:0.8rem; }
+.chisiamo-text .signature { margin-top:1.8rem; font-family:'Libre Baskerville',serif; font-style:italic; font-size:1rem; color:var(--gold); }
+.valori { margin-top:2rem; display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+.valore { padding:1.2rem; border:1px solid var(--border); background:var(--white); }
+.valore h4 { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; color:var(--navy); margin-bottom:0.3rem; }
+.valore p { font-size:0.75rem; font-weight:300; color:var(--text-light); line-height:1.6; }
+
+/* ── CONTATTACI ── */
+#contattaci { padding:7rem 5rem; background:var(--white); }
+.contattaci-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; margin-top:3rem; }
+.contattaci-info h3 { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:400; color:var(--navy); margin-bottom:2rem; }
+.contact-row { display:flex; gap:1.2rem; align-items:flex-start; padding:1.4rem 0; border-bottom:1px solid var(--border); }
+.contact-row:first-of-type { border-top:1px solid var(--border); }
+.contact-row-bar { width:2px; height:40px; flex-shrink:0; margin-top:2px; }
+.bar-blue { background:var(--navy-light); }
+.bar-gold { background:var(--gold); }
+.contact-label { font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--text-light); display:block; margin-bottom:0.25rem; }
+.contact-value { font-size:0.9rem; font-weight:400; color:var(--text-dark); }
+.contact-value a { color:var(--navy-light); text-decoration:none; transition:color 0.3s; }
+.contact-value a:hover { color:var(--gold); }
+.social-row { margin-top:2rem; display:flex; gap:0.8rem; flex-wrap:wrap; }
+.social-btn { font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--navy-mid); border:1px solid var(--border); padding:0.55rem 1.1rem; text-decoration:none; transition:background 0.3s,color 0.3s,border-color 0.3s; }
+.social-btn:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
+.contattaci-map { aspect-ratio:4/3; background:linear-gradient(145deg,#2A5FA8,#0D2240); display:flex; align-items:center; justify-content:center;
+/* SOSTITUISCI CON: <iframe> Google Maps */ }
+
+/* ── SECTION HEADER ── */
+.sec-header { margin-bottom:3.5rem; }
+.sec-header h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; color:var(--navy); margin-top:0.3rem; }
+.sec-header.center { text-align:center; }
+.sec-header.center .section-label { justify-content:center; }
+
+/* ── FOOTER ── */
+footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 5rem 0; }
+.footer-main { display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,0.07); }
+.footer-logo { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; letter-spacing:0.08em; color:var(--white); text-decoration:none; display:block; margin-bottom:0.8rem; }
+.footer-logo span { font-style:italic; color:var(--gold-light); }
+.footer-brand p { font-size:0.78rem; font-weight:300; color:rgba(255,255,255,0.38); line-height:1.8; max-width:260px; }
+.footer-col h4 { font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--gold); margin-bottom:1.2rem; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+.footer-col ul a { font-size:0.75rem; font-weight:300; color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.3s; }
+.footer-col ul a:hover { color:var(--gold-light); }
+.footer-bottom { padding:1.5rem 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.footer-copy { font-size:0.65rem; font-weight:300; color:rgba(255,255,255,0.28); }
+.footer-legal { display:flex; gap:1.5rem; flex-wrap:wrap; }
+.footer-legal a { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:400; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.3s; }
+.footer-legal a:hover { color:var(--gold-light); }
+
+/* ── MODALI LEGAL ── */
+.modal-overlay { display:none; position:fixed; inset:0; z-index:500; background:rgba(10,24,40,0.8); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:2rem; }
+.modal-overlay.open { display:flex; }
+.modal-box { background:var(--white); max-width:700px; width:100%; max-height:80vh; overflow-y:auto; padding:3rem; position:relative; animation:modalIn 0.3s ease both; }
+.modal-close { position:absolute; top:1.5rem; right:1.5rem; background:none; border:none; cursor:pointer; font-size:1.1rem; color:var(--text-light); transition:color 0.3s; }
+.modal-close:hover { color:var(--navy); }
+.modal-box h2 { font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:400; color:var(--navy); margin-bottom:0.4rem; }
+.modal-box .modal-date { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-light); margin-bottom:2rem; display:block; }
+.modal-box h3 { font-family:'Playfair Display',serif; font-size:1rem; font-weight:400; color:var(--navy-mid); margin:1.6rem 0 0.5rem; }
+.modal-box p { font-size:0.82rem; font-weight:300; line-height:1.9; color:var(--text-mid); margin-bottom:0.6rem; }
+.modal-box ul { margin:0.3rem 0 0.7rem 1rem; }
+.modal-box ul li { font-size:0.82rem; font-weight:300; line-height:1.9; color:var(--text-mid); }
+
+/* ── COOKIE BANNER ── */
+#cookie-banner { display:none; position:fixed; bottom:0; left:0; right:0; z-index:350; background:var(--navy); border-top:2px solid var(--gold); padding:1.2rem 4rem; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; }
+#cookie-banner p { font-size:0.78rem; font-weight:300; color:rgba(255,255,255,0.7); line-height:1.7; max-width:660px; }
+#cookie-banner p a { color:var(--gold-light); text-decoration:underline; cursor:pointer; }
+.cookie-btns { display:flex; gap:0.8rem; }
+.btn-cookie-ok { background:var(--gold); color:var(--navy); border:none; cursor:pointer; padding:0.6rem 1.5rem; font-family:'Raleway',sans-serif; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; transition:background 0.3s; }
+.btn-cookie-ok:hover { background:var(--gold-light); }
+.btn-cookie-no { background:transparent; color:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.2); cursor:pointer; padding:0.6rem 1.1rem; font-family:'Raleway',sans-serif; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:400; transition:color 0.3s; }
+.btn-cookie-no:hover { color:var(--white); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:960px) {
+  nav { padding:0 1.5rem; }
+  .nav-links { display:none; }
+  .nav-burger { display:flex; }
+  .hero { margin-top:80px; }
+  .hero-content { padding:0 1.8rem 3.5rem; }
+  #home { grid-template-columns:1fr; padding:4rem 1.5rem; gap:2.5rem; }
+  .home-image { aspect-ratio:16/9; }
+  .zona-strip { grid-template-columns:1fr 1fr; padding:2.5rem 1.5rem; gap:1.5rem; }
+  .zona-item { border-right:none; padding:0 !important; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:1.5rem !important; }
+  #camere { padding:4rem 1.5rem; }
+  .camere-section-header { flex-direction:column; align-items:flex-start; gap:0.8rem; }
+  .camere-section-header p { text-align:left; max-width:none; }
+  .rooms-grid { grid-template-columns:1fr 1fr; gap:1rem; }
+  #piscina { grid-template-columns:1fr; }
+  .pool-photo { min-height:300px; }
+  .pool-text { padding:3.5rem 2rem; }
+  .gallery-strip { grid-template-columns:repeat(3,1fr); }
+  .gs:nth-child(4),.gs:nth-child(5) { display:none; }
+  #servizi { padding:4rem 1.5rem; }
+  .servizi-grid { grid-template-columns:1fr; }
+  .servizio-card { border-right:none; border-bottom:1px solid var(--border); }
+  #chisiamo { grid-template-columns:1fr; padding:4rem 1.5rem; gap:2.5rem; }
+  .chisiamo-image { aspect-ratio:16/9; }
+  #contattaci { padding:4rem 1.5rem; }
+  .contattaci-layout { grid-template-columns:1fr; gap:2.5rem; }
+  footer { padding:2.5rem 1.5rem 0; }
+  .footer-main { grid-template-columns:1fr; gap:2rem; padding-bottom:2rem; }
+  .footer-bottom { flex-direction:column; align-items:flex-start; }
+  #cookie-banner { padding:1.2rem 1.5rem; }
+  .room-modal-body { padding:1.8rem 1.5rem 2.5rem; }
+  .dotazioni-grid { grid-template-columns:1fr 1fr; }
+  .valori { grid-template-columns:1fr; }
+  .pool-list { grid-template-columns:1fr; }
+}
+@media (max-width:560px) {
+  .rooms-grid { grid-template-columns:1fr; }
+  .zona-strip { grid-template-columns:1fr; }
+  .gallery-strip { grid-template-columns:1fr 1fr; }
+  .gs:nth-child(3) { display:none; }
+  .room-modal-meta { gap:1rem; }
+  .room-modal-meta span { padding-right:1rem; font-size:0.6rem; }
+  .dotazioni-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Mi&ugrave; <span>Guest House</span></a>
+  <ul class="nav-links">
+    <li><a href="#home" class="nav-link">Home</a></li>
+    <li><a href="#camere" class="nav-link">Camere</a></li>
+    <li><a href="#piscina" class="nav-link">Piscina</a></li>
+    <li><a href="#servizi" class="nav-link">Servizi</a></li>
+    <li><a href="#chisiamo" class="nav-link">Chi siamo</a></li>
+    <li><a href="#contattaci" class="nav-link">Contattaci</a></li>
+  </ul>
+  <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="#home">Home</a><a href="#camere">Camere</a><a href="#piscina">Piscina</a>
+  <a href="#servizi">Servizi</a><a href="#chisiamo">Chi siamo</a><a href="#contattaci">Contattaci</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ph"><span>Inserire foto hero</span></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Castelli Romani &nbsp;&middot;&nbsp; Ciampino, Roma</p>
+    <h1>Benvenuti nel cuore<br>dei <em>Castelli Romani</em></h1>
+    <p class="hero-desc">Una Guest House familiare immersa nel verde dei Colli Albani, a pochi minuti da Frascati e dal Lago di Albano. Sei camere, piscina privata e accoglienza autentica.</p>
+    <div class="hero-actions">
+      <a href="#contattaci" class="btn-white">Contattaci</a>
+      <a href="#camere" class="btn-ghost-white">Scopri le camere</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOME -->
+<section id="home">
+  <div class="home-text">
+    <p class="section-label">Dove siamo</p>
+    <h2>I <em>Castelli Romani</em>,<br>a due passi da Roma</h2>
+    <p>Situata a Ciampino, alle porte dei Colli Albani, Mi&ugrave; Guest House &egrave; il punto di partenza ideale per scoprire uno dei territori pi&ugrave; affascinanti del Lazio: borghi medievali, laghi vulcanici, vini DOC e panorami mozzafiato, a soli 25 km dalla Capitale.</p>
+    <p>Che vogliate visitare Roma in giornata o perdervi tra le cantine di Frascati e i vicoli di Grottaferrata, qui trovate tutto ci&ograve; che serve per un soggiorno autentico e rilassante.</p>
+    <div class="signature">&mdash; Alessandro e Fabiana vi aspettano</div>
+  </div>
+  <div class="home-image"><span class="ph">Inserire foto zona / panorama</span></div>
+</section>
+
+<!-- ZONA STRIP -->
+<div class="zona-strip">
+  <div class="zona-item"><div class="zona-num">01</div><h4>Frascati</h4><p>Centro medievale, vini DOC e panorami sulla Campagna Romana.</p><p class="zona-dist">5 minuti</p></div>
+  <div class="zona-item"><div class="zona-num">02</div><h4>Lago di Albano</h4><p>Cratere vulcanico, passeggiate, kayak e tramonti indimenticabili.</p><p class="zona-dist">15 minuti</p></div>
+  <div class="zona-item"><div class="zona-num">03</div><h4>Grottaferrata</h4><p>L'Abbazia greca, il borgo raccolto e la cucina laziale autentica.</p><p class="zona-dist">10 minuti</p></div>
+  <div class="zona-item"><div class="zona-num">04</div><h4>Roma</h4><p>La Capitale raggiungibile in treno, senza il caos del centro urbano.</p><p class="zona-dist">30 min in treno</p></div>
+</div>
+
+<!-- CAMERE -->
+<section id="camere">
+  <div class="camere-section-header">
+    <div>
+      <p class="section-label">Le nostre camere</p>
+      <h2>Sei camere, ognuna con il suo carattere</h2>
+    </div>
+    <p>Ogni camera prende il nome da un borgo dei Castelli Romani. Clicca per scoprirla.</p>
+  </div>
+  <div class="rooms-grid">
+
+    <!-- MARINO -->
+    <div class="room-card" onclick="openRoom('marino')">
+      <div class="room-card-photo"><div class="room-card-photo-inner rc1"><span class="ph">Foto camera Marino</span></div></div>
+      <div class="room-card-body">
+        <div class="room-card-tag">Camera Doppia &middot; Bagno Privato</div>
+        <h3>Marino</h3>
+        <p>Spaziosa e luminosa, con vista sul giardino. Ideale per coppie.</p>
+        <span class="room-card-link">Scopri la camera</span>
+      </div>
+    </div>
+
+    <!-- CASTEL GANDOLFO -->
+    <div class="room-card" onclick="openRoom('castgandolfo')">
+      <div class="room-card-photo"><div class="room-card-photo-inner rc2"><span class="ph">Foto camera Castel Gandolfo</span></div></div>
+      <div class="room-card-body">
+        <div class="room-card-tag">Camera Doppia &middot; Bagno Privato</div>
+        <h3>Castel Gandolfo</h3>
+        <p>Elegante e tranquilla, affacciata sul verde dei Colli Albani.</p>
+        <span class="room-card-link">Scopri la camera</span>
+      </div>
+    </div>
+
+    <!-- NEMI -->
+    <div class="room-card" onclick="openRoom('nemi')">
+      <div class="room-card-photo"><div class="room-card-photo-inner rc3"><span class="ph">Foto camera Nemi</span></div></div>
+      <div class="room-card-body">
+        <div class="room-card-tag">Camera Doppia &middot; Bagno Privato</div>
+        <h3>Nemi</h3>
+        <p>Atmosfera raccolta e romantica, perfetta per un soggiorno di coppia.</p>
+        <span class="room-card-link">Scopri la camera</span>
+      </div>
+    </div>
+
+    <!-- GENZANO -->
+    <div class="room-card" onclick="openRoom('genzano')">
+      <div class="room-card-photo"><div class="room-card-photo-inner rc4"><span class="ph">Foto camera Genzano</span></div></div>
+      <div class="room-card-body">
+        <div class="room-card-tag">Camera Tripla &middot; Bagno Privato</div>
+        <h3>Genzano</h3>
+        <p>Pi&ugrave; spazio per chi viaggia in tre o con un bambino piccolo.</p>
+        <span class="room-card-link">Scopri la camera</span>
+      </div>
+    </div>
+
+    <!-- ARICCIA -->
+    <div class="room-card" onclick="openRoom('ariccia')">
+      <div class="room-card-photo"><div class="room-card-photo-inner rc5"><span class="ph">Foto camera Ariccia</span></div></div>
+      <div class="room-card-body">
+        <div class="room-card-tag">Camera Singola &middot; Bagno Privato</div>
+        <h3>Ariccia</h3>
+        <p>Raccolta e funzionale, ideale per chi viaggia da solo o per lavoro.</p>
+        <span class="room-card-link">Scopri la camera</span>
+      </div>
+    </div>
+
+    <!-- FRASCATI -->
+    <div class="room-card" onclick="openRoom('frascati')">
+      <div class="room-card-photo"><div class="room-card-photo-inner rc6"><span class="ph">Foto camera Frascati</span></div></div>
+      <div class="room-card-body">
+        <div class="room-card-tag">Suite &middot; Bagno Privato</div>
+        <h3>Frascati</h3>
+        <p>La nostra camera pi&ugrave; grande e curata. Un'esperienza speciale.</p>
+        <span class="room-card-link">Scopri la camera</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL MARINO -->
+<div class="room-modal" id="modal-marino">
+  <div class="room-modal-box">
+    <button class="room-modal-close" onclick="closeRoom('marino')">&times;</button>
+    <div class="room-modal-photo rc1"><span class="ph">Foto camera Marino</span></div>
+    <div class="room-modal-body">
+      <div class="room-modal-meta"><span>Camera Doppia</span><span>Bagno Privato</span><span>Vista Giardino</span></div>
+      <h2>Marino</h2>
+      <span class="room-modal-subtitle">Castelli Romani &middot; Ciampino</span>
+      <p>La camera Marino &egrave; spaziosa e luminosa, con finestre che si affacciano sul giardino privato della struttura. Arredata con cura, combina il comfort moderno con i dettagli caldi di una casa di famiglia.</p>
+      <p>Ideale per coppie che cercano tranquillit&agrave; e un buon punto di partenza per esplorare i Castelli Romani.</p>
+      <div class="room-modal-dotazioni">
+        <h4>Dotazioni</h4>
+        <div class="dotazioni-grid">
+          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Aria condizionata</span>
+          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Vista giardino</span><span class="dotazione">Colazione inclusa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CASTEL GANDOLFO -->
+<div class="room-modal" id="modal-castgandolfo">
+  <div class="room-modal-box">
+    <button class="room-modal-close" onclick="closeRoom('castgandolfo')">&times;</button>
+    <div class="room-modal-photo rc2"><span class="ph">Foto camera Castel Gandolfo</span></div>
+    <div class="room-modal-body">
+      <div class="room-modal-meta"><span>Camera Doppia</span><span>Bagno Privato</span><span>Vista Colli</span></div>
+      <h2>Castel Gandolfo</h2>
+      <span class="room-modal-subtitle">Castelli Romani &middot; Ciampino</span>
+      <p>Elegante e silenziosa, la camera Castel Gandolfo &egrave; affacciata sul verde dei Colli Albani. L'atmosfera &egrave; rilassante, con tonalità tenui e dettagli curati che richiamano la storia secolare del borgo che le d&agrave; il nome.</p>
+      <p>Perfetta per chi cerca quiete e bellezza, lontano dal caos della citt&agrave;.</p>
+      <div class="room-modal-dotazioni">
+        <h4>Dotazioni</h4>
+        <div class="dotazioni-grid">
+          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Aria condizionata</span>
+          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Vista colli</span><span class="dotazione">Colazione inclusa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL NEMI -->
+<div class="room-modal" id="modal-nemi">
+  <div class="room-modal-box">
+    <button class="room-modal-close" onclick="closeRoom('nemi')">&times;</button>
+    <div class="room-modal-photo rc3"><span class="ph">Foto camera Nemi</span></div>
+    <div class="room-modal-body">
+      <div class="room-modal-meta"><span>Camera Doppia</span><span>Bagno Privato</span><span>Atmosfera Romantica</span></div>
+      <h2>Nemi</h2>
+      <span class="room-modal-subtitle">Castelli Romani &middot; Ciampino</span>
+      <p>Come il piccolo borgo affacciato sul lago, la camera Nemi ha un'atmosfera raccolta e speciale. Adatta a chi vuole un soggiorno romantico nel verde dei Castelli, senza rinunciare al comfort.</p>
+      <p>Le fragole di Nemi, famose in tutto il Lazio, sono spesso sulla tavola della nostra colazione.</p>
+      <div class="room-modal-dotazioni">
+        <h4>Dotazioni</h4>
+        <div class="dotazioni-grid">
+          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Aria condizionata</span>
+          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Luce naturale</span><span class="dotazione">Colazione inclusa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL GENZANO -->
+<div class="room-modal" id="modal-genzano">
+  <div class="room-modal-box">
+    <button class="room-modal-close" onclick="closeRoom('genzano')">&times;</button>
+    <div class="room-modal-photo rc4"><span class="ph">Foto camera Genzano</span></div>
+    <div class="room-modal-body">
+      <div class="room-modal-meta"><span>Camera Tripla</span><span>Bagno Privato</span><span>Ideale per Famiglie</span></div>
+      <h2>Genzano</h2>
+      <span class="room-modal-subtitle">Castelli Romani &middot; Ciampino</span>
+      <p>La camera Genzano &egrave; la pi&ugrave; adatta a chi viaggia in tre o con un bambino. Pi&ugrave; spazio, una disposizione flessibile dei letti e tutti i comfort necessari per una famiglia in vacanza.</p>
+      <p>Genzano di Roma, famosa per la sua Infiorata, &egrave; a pochi minuti di auto.</p>
+      <div class="room-modal-dotazioni">
+        <h4>Dotazioni</h4>
+        <div class="dotazioni-grid">
+          <span class="dotazione">Letto matrimoniale + singolo</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Aria condizionata</span>
+          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Spazio extra</span><span class="dotazione">Colazione inclusa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ARICCIA -->
+<div class="room-modal" id="modal-ariccia">
+  <div class="room-modal-box">
+    <button class="room-modal-close" onclick="closeRoom('ariccia')">&times;</button>
+    <div class="room-modal-photo rc5"><span class="ph">Foto camera Ariccia</span></div>
+    <div class="room-modal-body">
+      <div class="room-modal-meta"><span>Camera Singola</span><span>Bagno Privato</span><span>Uso Singolo</span></div>
+      <h2>Ariccia</h2>
+      <span class="room-modal-subtitle">Castelli Romani &middot; Ciampino</span>
+      <p>Funzionale e accogliente, la camera Ariccia &egrave; pensata per chi viaggia da solo o per soggiorni di lavoro nei dintorni di Roma. Tutto il necessario, senza nulla di superfluo.</p>
+      <p>La porchetta di Ariccia, un must dei Castelli, &egrave; a cinque minuti di macchina.</p>
+      <div class="room-modal-dotazioni">
+        <h4>Dotazioni</h4>
+        <div class="dotazioni-grid">
+          <span class="dotazione">Letto singolo</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Aria condizionata</span>
+          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Scrivania</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Biancheria inclusa</span><span class="dotazione">Colazione inclusa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FRASCATI -->
+<div class="room-modal" id="modal-frascati">
+  <div class="room-modal-box">
+    <button class="room-modal-close" onclick="closeRoom('frascati')">&times;</button>
+    <div class="room-modal-photo rc6"><span class="ph">Foto camera Frascati</span></div>
+    <div class="room-modal-body">
+      <div class="room-modal-meta"><span>Suite</span><span>Bagno Privato</span><span>La pi&ugrave; grande</span></div>
+      <h2>Frascati</h2>
+      <span class="room-modal-subtitle">Castelli Romani &middot; Ciampino</span>
+      <p>La suite Frascati &egrave; la nostra camera di punta: la pi&ugrave; spaziosa, la pi&ugrave; curata, quella che porta il nome della perla dei Castelli. Arredata con gusto, offre un soggiorno davvero speciale.</p>
+      <p>Per chi vuole concedersi qualcosa in pi&ugrave;: pi&ugrave; spazio, pi&ugrave; luce, pi&ugrave; cura nei dettagli. Come un buon bicchiere di Frascati DOC.</p>
+      <div class="room-modal-dotazioni">
+        <h4>Dotazioni</h4>
+        <div class="dotazioni-grid">
+          <span class="dotazione">Letto king size</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Aria condizionata</span>
+          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV 55"</span><span class="dotazione">Zona relax</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Biancheria premium</span><span class="dotazione">Colazione inclusa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PISCINA -->
+<section id="piscina">
+  <div class="pool-photo"><span class="ph">Inserire foto piscina</span></div>
+  <div class="pool-text">
+    <p class="section-label gold">La nostra piscina</p>
+    <h2>Relax tra<br><em>cielo e colline</em></h2>
+    <p>La piscina &egrave; il cuore della struttura nei mesi estivi. Immersa nel verde dei Castelli Romani, &egrave; il posto perfetto per rilassarsi dopo una giornata di esplorazioni, con lettini, ombrelloni e il silenzio dei Colli Albani intorno.</p>
+    <p>Riservata esclusivamente agli ospiti, in un'atmosfera tranquilla e privata.</p>
+    <ul class="pool-list">
+      <li>Uso esclusivo ospiti</li><li>Lettini e ombrelloni</li>
+      <li>Aperta da giugno a settembre</li><li>Solarium attrezzato</li>
+      <li>Area relax privata</li><li>Speaker Bluetooth (codice MiuPool)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-strip">
+  <div class="gs"><div class="gs-inner gs1"><span class="gs-label">Esterni</span></div></div>
+  <div class="gs"><div class="gs-inner gs2"><span class="gs-label">Piscina</span></div></div>
+  <div class="gs"><div class="gs-inner gs3"><span class="gs-label">Camere</span></div></div>
+  <div class="gs"><div class="gs-inner gs4"><span class="gs-label">Colazione</span></div></div>
+  <div class="gs"><div class="gs-inner gs5"><span class="gs-label">Giardino</span></div></div>
+</div>
+
+<!-- SERVIZI -->
+<section id="servizi">
+  <div class="sec-header center">
+    <p class="section-label">I nostri servizi</p>
+    <h2>Tutto ci&ograve; che rende il soggiorno perfetto</h2>
+  </div>
+  <div class="servizi-grid">
+    <div class="servizio-card">
+      <div class="servizio-num">01</div>
+      <h3>Pernottamento in camera privata</h3>
+      <ul class="servizio-list">
+        <li>Colazione inclusa ogni mattina</li>
+        <li>Pulizia della camera e spazi comuni</li>
+        <li>Cambio biancheria ogni 7 giorni, asciugamani ogni 3</li>
+        <li>Wi-Fi gratuito ad alta velocit&agrave;</li>
+        <li>Bagno privato con doccia</li>
+        <li>Aria condizionata e riscaldamento</li>
+        <li>Check-in assistito oppure self check-in</li>
+        <li>Smart TV o accesso streaming</li>
+      </ul>
+    </div>
+    <div class="servizio-card">
+      <div class="servizio-num">02</div>
+      <h3>Servizi all'interno della struttura</h3>
+      <ul class="servizio-list">
+        <li>Informazioni turistiche sulla zona</li>
+        <li>Uso degli spazi comuni: solarium, terrazza e piscina</li>
+        <li>Parcheggio privato gratuito</li>
+        <li>Zona relax in giardino</li>
+        <li>Accesso cucina comune su richiesta</li>
+        <li>Deposito bagagli</li>
+      </ul>
+    </div>
+    <div class="servizio-card">
+      <div class="servizio-num">03</div>
+      <h3>Cosa vi forniamo</h3>
+      <ul class="servizio-list">
+        <li>Welcome Book digitale in camera con tutte le info su servizi, luoghi, ristoranti e spostamenti</li>
+        <li>Transfer a pagamento da/per aeroporto e stazione</li>
+        <li>Convenzioni con ristoranti e tour locali</li>
+        <li>Consigli personalizzati su itinerari e cantine</li>
+        <li>Assistenza durante tutto il soggiorno</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CHI SIAMO -->
+<section id="chisiamo">
+  <div class="chisiamo-image"><span class="ph">Inserire foto Alessandro e Fabiana</span></div>
+  <div class="chisiamo-text">
+    <p class="section-label">Chi siamo</p>
+    <h2>Alessandro e Fabiana,<br>una storia di <em>casa</em></h2>
+    <p>Siamo Alessandro e Fabiana, insieme da oltre 25 anni e uniti da una passione autentica per l'ospitalit&agrave;. Accogliere, ascoltare e far sentire ogni ospite a proprio agio &egrave; ci&ograve; che amiamo di pi&ugrave; del nostro lavoro.</p>
+    <p>Il nome <em style="font-family:'Libre Baskerville',serif; font-style:italic; color:var(--gold)">Mi&ugrave;</em> racchiude una storia personale a cui siamo molto legati. Tutto nasce oltre 20 anni fa, durante un soggiorno in un Bed and Breakfast. Ricordiamo ancora con affetto una colazione semplice ma curata, preparata con attenzione dalla signora che ci ospitava: sul tavolo c'erano tante cose buone, tra cui una scatola di muesli. Da quel momento abbiamo cominciato a chiamarci <em style="font-family:'Libre Baskerville',serif; font-style:italic">"Miusli"</em>, un soprannome affettuoso che negli anni si &egrave; evoluto, passando da Miuslem fino a diventare Mi&ugrave;.</p>
+    <p>Oggi rappresenta il nostro modo di accogliere: fatto di semplicit&agrave;, cura e attenzione ai dettagli. Gestiamo personalmente il B&amp;B con discrezione e dedizione, cercando di creare un ambiente elegante e rilassante, dove ogni ospite possa sentirsi davvero il benvenuto.</p>
+    <div class="valori">
+      <div class="valore"><h4>Autenticit&agrave;</h4><p>Prodotti locali, consigli veri, nessuna formula standardizzata.</p></div>
+      <div class="valore"><h4>Cura</h4><p>Ogni dettaglio &egrave; pensato per il vostro benessere.</p></div>
+      <div class="valore"><h4>Territorio</h4><p>Vi aiutiamo a scoprire i Castelli come li conosce chi ci vive.</p></div>
+      <div class="valore"><h4>Famiglia</h4><p>Vi accogliamo come ospiti, non come clienti.</p></div>
+    </div>
+    <div class="signature">&mdash; Alessandro e Fabiana</div>
+  </div>
+</section>
+
+<!-- CONTATTACI -->
+<section id="contattaci">
+  <div class="sec-header center">
+    <p class="section-label">Contattaci</p>
+    <h2>Siamo qui per voi</h2>
+  </div>
+  <div class="contattaci-layout">
+    <div class="contattaci-info">
+      <h3>Come raggiungerci</h3>
+      <div class="contact-row">
+        <div class="contact-row-bar bar-blue"></div>
+        <div><span class="contact-label">Indirizzo</span><span class="contact-value">Ciampino (Roma) &mdash; Castelli Romani, Lazio</span></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-bar bar-gold"></div>
+        <div><span class="contact-label">Telefono / WhatsApp</span><span class="contact-value"><a href="tel:+39XXXXXXXXXX">+39 XXX XXX XXXX</a></span></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-bar bar-blue"></div>
+        <div><span class="contact-label">Email</span><span class="contact-value"><a href="mailto:info@miubedbreakfast.it">info@miubedbreakfast.it</a></span></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-bar bar-gold"></div>
+        <div><span class="contact-label">Orari</span><span class="contact-value">Check-in dalle 14:00 &mdash; Check-out entro le 11:00</span></div>
+      </div>
+      <div class="social-row">
+        <a href="#" class="social-btn">Instagram</a>
+        <a href="#" class="social-btn">Facebook</a>
+        <a href="https://wa.me/39XXXXXXXXXX" class="social-btn" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+    <div class="contattaci-map"><span class="ph">Inserire mappa Google Maps (iframe)</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">Mi&ugrave; <span>Guest House</span></a>
+      <p>Guest House familiare immersa nel verde dei Castelli Romani, a Ciampino (Roma). Sei camere, piscina privata, colazione artigianale e accoglienza autentica di Alessandro e Fabiana.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigazione</h4>
+      <ul>
+        <li><a href="#home">Home</a></li><li><a href="#camere">Camere</a></li>
+        <li><a href="#piscina">Piscina</a></li><li><a href="#servizi">Servizi</a></li>
+        <li><a href="#chisiamo">Chi siamo</a></li><li><a href="#contattaci">Contattaci</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contatti</h4>
+      <ul>
+        <li><a href="tel:+39XXXXXXXXXX">+39 XXX XXX XXXX</a></li>
+        <li><a href="mailto:info@miubedbreakfast.it">info@miubedbreakfast.it</a></li>
+        <li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Mi&ugrave; Guest House Srls &nbsp;&middot;&nbsp; Tutti i diritti riservati &nbsp;&middot;&nbsp; P. IVA 17838921009</div>
+    <div class="footer-legal">
+      <a href="#" onclick="openModal('privacy');return false;">Privacy Policy</a>
+      <a href="#" onclick="openModal('cookie');return false;">Cookie Policy</a>
+      <a href="#" onclick="openModal('terms');return false;">Termini e Condizioni</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODALI LEGAL -->
+<div class="modal-overlay" id="modal-privacy">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('privacy')">&times;</button>
+    <h2>Privacy Policy</h2><span class="modal-date">Aggiornamento: maggio 2026</span>
+    <h3>1. Titolare del trattamento</h3><p>Mi&ugrave; Guest House Srls, P. IVA 17838921009, Ciampino (Roma). Email: info@miubedbreakfast.it</p>
+    <h3>2. Dati raccolti</h3><p>Il sito raccoglie solo i dati forniti volontariamente (nome, email, telefono tramite contatti) e dati di navigazione tramite cookie tecnici e, previo consenso, analitici.</p>
+    <h3>3. Finalit&agrave;</h3><p>Rispondere a richieste, gestire il rapporto contrattuale, analisi statistica anonima del traffico (solo con consenso).</p>
+    <h3>4. Base giuridica</h3><p>Consenso dell'interessato (art. 6.1.a GDPR) ed esecuzione di un contratto (art. 6.1.b GDPR).</p>
+    <h3>5. Conservazione</h3><p>I dati sono conservati per il tempo strettamente necessario e comunque non oltre 5 anni dalla cessazione del rapporto.</p>
+    <h3>6. Diritti</h3><p>In qualsiasi momento &egrave; possibile esercitare i diritti previsti dagli artt. 15-22 GDPR scrivendo a info@miubedbreakfast.it</p>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-cookie">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('cookie')">&times;</button>
+    <h2>Cookie Policy</h2><span class="modal-date">Aggiornamento: maggio 2026</span>
+    <h3>Cookie tecnici (necessari)</h3><p>Essenziali per il funzionamento del sito, non richiedono consenso. Includono cookie di sessione e preferenze utente.</p>
+    <h3>Cookie analitici (con consenso)</h3><p>Previo consenso, utilizziamo cookie analitici anonimi per migliorare il sito. Nessun dato personale identificativo viene raccolto.</p>
+    <h3>Gestione</h3><p>Le preferenze possono essere modificate in qualsiasi momento tramite le impostazioni del browser o il banner cookie. La durata massima dei cookie analitici &egrave; di 13 mesi.</p>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-terms">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('terms')">&times;</button>
+    <h2>Termini e Condizioni</h2><span class="modal-date">Aggiornamento: maggio 2026</span>
+    <h3>1. Titolare</h3><p>Mi&ugrave; Guest House Srls, P. IVA 17838921009. L'utilizzo del sito implica l'accettazione dei presenti termini.</p>
+    <h3>2. Propriet&agrave; intellettuale</h3><p>Tutti i contenuti (testi, immagini, loghi) sono di propriet&agrave; di Mi&ugrave; Guest House Srls. &Egrave; vietata la riproduzione senza autorizzazione scritta.</p>
+    <h3>3. Soggiorno</h3><p>Check-in dalle ore 14:00, check-out entro le 11:00. Variazioni concordabili con la struttura.</p>
+    <h3>4. Cancellazioni</h3><p>Le condizioni di cancellazione vengono comunicate al momento della prenotazione. Salvo diversa indicazione, cancellazione gratuita fino a 48 ore prima dell'arrivo.</p>
+    <h3>5. Legge applicabile</h3><p>I presenti termini sono regolati dalla legge italiana. Foro competente: Roma.</p>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <p>Utilizziamo cookie tecnici necessari e, previo consenso, cookie analitici anonimi. Consulta la <a onclick="openModal('cookie');return false;">Cookie Policy</a>.</p>
+  <div class="cookie-btns">
+    <button class="btn-cookie-ok" onclick="acceptCookies()">Accetta</button>
+    <button class="btn-cookie-no" onclick="declineCookies()">Solo necessari</button>
+  </div>
+</div>
+
+<script>
+// Nav
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+const burger = document.getElementById('burger');
+const mob = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => { burger.classList.toggle('open'); mob.classList.toggle('open'); });
+mob.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { burger.classList.remove('open'); mob.classList.remove('open'); }));
+
+// Active link
+const sects = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-link');
+sects.forEach(s => new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { links.forEach(l => { l.classList.remove('active'); if(l.getAttribute('href')==='#'+e.target.id) l.classList.add('active'); }); }});
+}, {threshold:0.35}).observe(s));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) {
+  const t = document.querySelector(this.getAttribute('href'));
+  if(t){ e.preventDefault(); window.scrollTo({top: t.getBoundingClientRect().top+window.scrollY-80, behavior:'smooth'}); }
+}));
+
+// Room modals
+function openRoom(id) {
+  document.getElementById('modal-'+id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeRoom(id) {
+  document.getElementById('modal-'+id).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.room-modal').forEach(m => m.addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.body.style.overflow=''; }}));
+
+// Legal modals
+function openModal(id) { document.getElementById('modal-'+id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(id) { document.getElementById('modal-'+id).classList.remove('open'); document.body.style.overflow=''; }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.body.style.overflow=''; }}));
+document.addEventListener('keydown', e => { if(e.key==='Escape'){ document.querySelectorAll('.room-modal.open,.modal-overlay.open').forEach(m=>{ m.classList.remove('open'); document.body.style.overflow=''; }); }});
+
+// Cookie
+window.addEventListener('load', () => { if(!localStorage.getItem('miu_cookie')) document.getElementById('cookie-banner').style.display='flex'; });
+function acceptCookies(){ localStorage.setItem('miu_cookie','ok'); document.getElementById('cookie-banner').style.display='none'; }
+function declineCookies(){ localStorage.setItem('miu_cookie','no'); document.getElementById('cookie-banner').style.display='none'; }
+</script>
+</body>
+</html>
