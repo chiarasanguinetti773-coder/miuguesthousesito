@@ -22,12 +22,9 @@
   --text-mid: #2C4A6A;
   --text-light: #6A88A4;
 }
-
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
 body { font-family: 'Raleway', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
-
-/* ── NAV ── */
 nav {
   position: fixed; top:0; left:0; right:0; z-index:300;
   display: flex; align-items: center; justify-content: space-between;
@@ -37,16 +34,9 @@ nav {
   transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
-.nav-logo {
-  display: flex; align-items: center; text-decoration: none; flex-shrink: 0; gap: 0.7rem;
-}
-.nav-logo img {
-  height: 48px; width: auto; display: block;
-}
-.nav-logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.35rem; font-weight: 400; letter-spacing: 0.08em; color: var(--navy);
-}
+.nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; gap: 0.7rem; }
+.nav-logo img { height: 48px; width: auto; display: block; }
+.nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 400; letter-spacing: 0.08em; color: var(--navy); }
 .nav-logo-text span { font-style: italic; color: var(--gold); }
 .nav-links { display: flex; align-items: center; list-style: none; }
 .nav-links li a {
@@ -60,10 +50,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 }
 .nav-links li a:hover, .nav-links li a.active { color: var(--navy); }
 .nav-links li a:hover::after, .nav-links li a.active::after { transform: scaleX(1); }
-.nav-burger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer;
-  background: none; border: none; padding: 0.3rem;
-}
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0.3rem; }
 .nav-burger span { display: block; width: 22px; height: 1px; background: var(--navy); transition: transform 0.3s, opacity 0.3s; }
 .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .nav-burger.open span:nth-child(2) { opacity: 0; }
@@ -81,11 +68,9 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
   padding: 0.9rem 0; border-bottom: 1px solid var(--border); transition: color 0.3s;
 }
 .nav-mobile a:hover { color: var(--navy); }
-
-/* ── HERO ── */
 .hero {
   position: relative; height: 100vh; min-height: 600px;
-  display: flex; align-items: flex-end; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
   margin-top: 80px;
 }
 .hero-bg {
@@ -96,35 +81,29 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(10,24,40,0.88) 0%, rgba(10,24,40,0.55) 50%, rgba(10,24,40,0.25) 100%);
 }
-.hero-ph {
-  position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; pointer-events: none;
-}
-.hero-ph span { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.15); border: 1px dashed rgba(255,255,255,0.1); padding: 0.5rem 1rem; }
 .hero-content {
-  position: relative; z-index: 2; padding: 0 5rem 5rem; max-width: 680px;
+  position: relative; z-index: 2; padding: 0 5rem; max-width: 780px; width: 100%;
+  text-align: center;
   animation: fadeUp 1s 0.15s ease both;
 }
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 .hero-eyebrow {
   font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 500;
   color: var(--gold-light); margin-bottom: 1.2rem;
-  display: flex; align-items: center; gap: 0.8rem;
+  display: flex; align-items: center; justify-content: center; gap: 0.8rem;
 }
-.hero-eyebrow::before { content:''; display:block; width:32px; height:1px; background:var(--gold); }
 .hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.6rem, 5vw, 4.8rem); font-weight: 400; line-height: 1.1;
   color: var(--white); margin-bottom: 1.4rem;
 }
 .hero h1 em { font-style: italic; color: var(--gold-light); }
-.hero-desc { font-size: 0.98rem; font-weight: 300; line-height: 1.9; color: rgba(255,255,255,0.72); margin-bottom: 2.2rem; max-width: 440px; }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.hero-desc { font-size: 0.98rem; font-weight: 300; line-height: 1.9; color: rgba(255,255,255,0.72); margin-bottom: 2.2rem; max-width: 520px; margin-inline: auto; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: center; }
 .btn-white { background: var(--white); color: var(--navy); padding: 0.9rem 2rem; text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; transition: background 0.3s; }
 .btn-white:hover { background: var(--off-white); }
 .btn-ghost-white { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 1px; transition: color 0.3s, border-color 0.3s; }
 .btn-ghost-white:hover { color: var(--gold-light); border-color: var(--gold-light); }
-
-/* ── HELPERS ── */
 .section-label {
   font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500;
   color: var(--navy-light); margin-bottom: 1.2rem;
@@ -135,16 +114,12 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .section-label.gold::before { background: var(--gold); }
 .ph { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.2); border: 1px dashed rgba(255,255,255,0.15); padding: 0.45rem 0.9rem; font-family: 'Raleway', sans-serif; }
 .ph.on-light { color: rgba(13,34,64,0.2); border-color: rgba(13,34,64,0.15); }
-
-/* ── HOME ── */
 #home { padding: 6rem 5rem; background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
 .home-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem,3.2vw,2.8rem); font-weight: 400; line-height: 1.2; color: var(--navy); margin-bottom: 1.4rem; }
 .home-text h2 em { font-style: italic; color: var(--gold); }
 .home-text p { font-size: 0.9rem; font-weight: 300; line-height: 2; color: var(--text-light); margin-bottom: 0.8rem; }
 .home-text .signature { margin-top: 1.8rem; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 1rem; color: var(--gold); }
 .home-image { aspect-ratio: 4/3; background: url('WhatsApp%20Image%202026-04-10%20at%2021.15.40.jpeg') center/cover; display: flex; align-items: center; justify-content: center; }
-
-/* Zona strip */
 .zona-strip { background: var(--navy); padding: 3.5rem 5rem; display: grid; grid-template-columns: repeat(4,1fr); }
 .zona-item { padding: 0 2rem 0 0; border-right: 1px solid rgba(255,255,255,0.08); transition: background 0.3s; }
 .zona-item:last-child { border-right: none; padding-right: 0; padding-left: 2rem; }
@@ -153,31 +128,15 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .zona-item h4 { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:400; color:var(--gold-light); margin-bottom:0.3rem; }
 .zona-item p { font-size:0.75rem; font-weight:300; color:rgba(255,255,255,0.45); line-height:1.7; }
 .zona-dist { margin-top:0.5rem; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(184,151,90,0.5); font-weight:500; }
-
-/* ── CAMERE ── */
 #camere { padding: 7rem 5rem; background: var(--off-white); }
 .camere-section-header { margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
 .camere-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; color:var(--navy); }
 .camere-section-header p { font-size:0.85rem; font-weight:300; color:var(--text-light); max-width:360px; text-align:right; line-height:1.8; }
-
-/* Griglia 3 colonne */
-.rooms-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-}
-.room-card {
-  background: var(--white); cursor: pointer; overflow: hidden;
-  border: 1px solid var(--border);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+.rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.room-card { background: var(--white); cursor: pointer; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
 .room-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,34,64,0.12); }
-.room-card-photo {
-  aspect-ratio: 3/2; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-}
-.room-card-photo-inner {
-  width:100%; height:100%; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
-  display: flex; align-items: center; justify-content: center;
-}
+.room-card-photo { aspect-ratio: 3/2; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.room-card-photo-inner { width:100%; height:100%; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); display: flex; align-items: center; justify-content: center; }
 .room-card:hover .room-card-photo-inner { transform: scale(1.04); }
 .rc1 { background: url('Screenshot%202026-04-27%20alle%2015.57.00.png') center/cover; }
 .rc2 { background: url('Screenshot%202026-04-27%20alle%2017.06.38.png') center/cover; }
@@ -189,39 +148,16 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .room-card-tag { font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--gold); margin-bottom:0.4rem; }
 .room-card-body h3 { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; color:var(--navy); margin-bottom:0.5rem; }
 .room-card-body p { font-size:0.78rem; font-weight:300; color:var(--text-light); line-height:1.7; margin-bottom:1.2rem; }
-.room-card-link {
-  font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500;
-  color:var(--navy); display:inline-flex; align-items:center; gap:0.4rem;
-  transition: gap 0.3s, color 0.3s;
-}
+.room-card-link { font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--navy); display:inline-flex; align-items:center; gap:0.4rem; transition: gap 0.3s, color 0.3s; }
 .room-card:hover .room-card-link { gap:0.7rem; color:var(--gold); }
 .room-card-link::after { content:'→'; }
-
-/* ── MODAL CAMERA ── */
-.room-modal {
-  display: none; position: fixed; inset:0; z-index:400;
-  background: rgba(10,24,40,0.7); backdrop-filter: blur(6px);
-  align-items: flex-start; justify-content: center;
-  padding: 2rem; overflow-y: auto;
-}
+.room-modal { display: none; position: fixed; inset:0; z-index:400; background: rgba(10,24,40,0.7); backdrop-filter: blur(6px); align-items: flex-start; justify-content: center; padding: 2rem; overflow-y: auto; }
 .room-modal.open { display: flex; }
-.room-modal-box {
-  background: var(--white); width: 100%; max-width: 860px;
-  position: relative; animation: modalIn 0.35s ease both;
-  margin: auto;
-}
+.room-modal-box { background: var(--white); width: 100%; max-width: 860px; position: relative; animation: modalIn 0.35s ease both; margin: auto; }
 @keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-.room-modal-close {
-  position: absolute; top:1.2rem; right:1.2rem; z-index:1;
-  background: rgba(255,255,255,0.9); border:1px solid var(--border); cursor:pointer;
-  width:36px; height:36px; display:flex; align-items:center; justify-content:center;
-  font-size:1rem; color:var(--text-mid); transition:background 0.2s;
-}
+.room-modal-close { position: absolute; top:1.2rem; right:1.2rem; z-index:1; background: rgba(255,255,255,0.9); border:1px solid var(--border); cursor:pointer; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--text-mid); transition:background 0.2s; }
 .room-modal-close:hover { background: var(--navy); color: var(--white); }
-.room-modal-photo {
-  aspect-ratio: 16/7; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-}
+.room-modal-photo { aspect-ratio: 16/7; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .room-modal-body { padding: 2.5rem 3rem 3rem; }
 .room-modal-meta { display:flex; gap:2rem; margin-bottom:1.8rem; flex-wrap:wrap; }
 .room-modal-meta span { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--text-light); border-right:1px solid var(--border); padding-right:2rem; }
@@ -234,8 +170,6 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .dotazioni-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; }
 .dotazione { font-size:0.78rem; font-weight:300; color:var(--text-light); display:flex; align-items:center; gap:0.4rem; }
 .dotazione::before { content:''; display:block; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
-
-/* ── PISCINA ── */
 #piscina { display:grid; grid-template-columns:1fr 1fr; min-height:520px; }
 .pool-photo { background: url('WhatsApp%20Image%202026-04-10%20at%2021.15.41.jpeg') center/cover; display:flex; align-items:center; justify-content:center; min-height:460px; }
 .pool-text { background:var(--navy); padding:5.5rem 5rem; display:flex; flex-direction:column; justify-content:center; }
@@ -245,8 +179,6 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .pool-list { margin-top:1.8rem; list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:0.55rem; }
 .pool-list li { font-size:0.78rem; font-weight:300; color:rgba(255,255,255,0.7); display:flex; align-items:center; gap:0.5rem; }
 .pool-list li::before { content:''; display:block; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
-
-/* Gallery strip */
 .gallery-strip { display:grid; grid-template-columns:repeat(5,1fr); height:240px; gap:2px; }
 .gs { overflow:hidden; display:flex; align-items:center; justify-content:center; cursor:pointer; }
 .gs-inner { width:100%; height:100%; transition:transform 0.5s ease; display:flex; align-items:center; justify-content:center; }
@@ -257,8 +189,6 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .gs4 { background: url('Screenshot%202026-04-27%20alle%2015.57.00.png') center/cover; }
 .gs5 { background: url('WhatsApp%20Image%202026-04-10%20at%2021.15.40.jpeg') center/cover; }
 .gs-label { font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.18); font-family:'Raleway',sans-serif; }
-
-/* ── SERVIZI ── */
 #servizi { padding:7rem 5rem; background:var(--white); }
 .servizi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--border); }
 .servizio-card { padding:2.8rem 2.4rem; border-right:1px solid var(--border); transition:background 0.3s; }
@@ -269,8 +199,6 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .servizio-list { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
 .servizio-list li { font-size:0.78rem; font-weight:300; color:var(--text-light); line-height:1.6; display:flex; align-items:baseline; gap:0.5rem; }
 .servizio-list li::before { content:'—'; color:var(--border); font-size:0.55rem; flex-shrink:0; }
-
-/* ── CHI SIAMO ── */
 #chisiamo { padding:7rem 5rem; background:var(--off-white); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
 .chisiamo-image { aspect-ratio:4/5; background: url('WhatsApp%20Image%202026-04-10%20at%2021.15.38-3.jpeg') center/cover; display:flex; align-items:center; justify-content:center; }
 .chisiamo-text h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; line-height:1.2; color:var(--navy); margin-bottom:1.5rem; }
@@ -281,8 +209,6 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .valore { padding:1.2rem; border:1px solid var(--border); background:var(--white); }
 .valore h4 { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; color:var(--navy); margin-bottom:0.3rem; }
 .valore p { font-size:0.75rem; font-weight:300; color:var(--text-light); line-height:1.6; }
-
-/* ── CONTATTACI ── */
 #contattaci { padding:7rem 5rem; background:var(--white); }
 .contattaci-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; margin-top:3rem; }
 .contattaci-info h3 { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:400; color:var(--navy); margin-bottom:2rem; }
@@ -299,14 +225,10 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .social-btn { font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--navy-mid); border:1px solid var(--border); padding:0.55rem 1.1rem; text-decoration:none; transition:background 0.3s,color 0.3s,border-color 0.3s; }
 .social-btn:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
 .contattaci-map { aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-
-/* ── SECTION HEADER ── */
 .sec-header { margin-bottom:3.5rem; }
 .sec-header h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; color:var(--navy); margin-top:0.3rem; }
 .sec-header.center { text-align:center; }
 .sec-header.center .section-label { justify-content:center; }
-
-/* ── FOOTER ── */
 footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 5rem 0; }
 .footer-main { display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,0.07); }
 .footer-logo { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; letter-spacing:0.08em; color:var(--white); text-decoration:none; display:block; margin-bottom:0.8rem; }
@@ -321,8 +243,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
 .footer-legal { display:flex; gap:1.5rem; flex-wrap:wrap; }
 .footer-legal a { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:400; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.3s; }
 .footer-legal a:hover { color:var(--gold-light); }
-
-/* ── MODALI LEGAL ── */
 .modal-overlay { display:none; position:fixed; inset:0; z-index:500; background:rgba(10,24,40,0.8); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:2rem; }
 .modal-overlay.open { display:flex; }
 .modal-box { background:var(--white); max-width:700px; width:100%; max-height:80vh; overflow-y:auto; padding:3rem; position:relative; animation:modalIn 0.3s ease both; }
@@ -334,8 +254,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
 .modal-box p { font-size:0.82rem; font-weight:300; line-height:1.9; color:var(--text-mid); margin-bottom:0.6rem; }
 .modal-box ul { margin:0.3rem 0 0.7rem 1rem; }
 .modal-box ul li { font-size:0.82rem; font-weight:300; line-height:1.9; color:var(--text-mid); }
-
-/* ── COOKIE BANNER ── */
 #cookie-banner { display:none; position:fixed; bottom:0; left:0; right:0; z-index:350; background:var(--navy); border-top:2px solid var(--gold); padding:1.2rem 4rem; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; }
 #cookie-banner p { font-size:0.78rem; font-weight:300; color:rgba(255,255,255,0.7); line-height:1.7; max-width:660px; }
 #cookie-banner p a { color:var(--gold-light); text-decoration:underline; cursor:pointer; }
@@ -344,14 +262,12 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
 .btn-cookie-ok:hover { background:var(--gold-light); }
 .btn-cookie-no { background:transparent; color:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.2); cursor:pointer; padding:0.6rem 1.1rem; font-family:'Raleway',sans-serif; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:400; transition:color 0.3s; }
 .btn-cookie-no:hover { color:var(--white); }
-
-/* ── RESPONSIVE ── */
 @media (max-width:960px) {
   nav { padding:0 1.5rem; }
   .nav-links { display:none; }
   .nav-burger { display:flex; }
   .hero { margin-top:80px; }
-  .hero-content { padding:0 1.8rem 3.5rem; }
+  .hero-content { padding:0 1.8rem; }
   #home { grid-template-columns:1fr; padding:4rem 1.5rem; gap:2.5rem; }
   .home-image { aspect-ratio:16/9; }
   .zona-strip { grid-template-columns:1fr 1fr; padding:2.5rem 1.5rem; gap:1.5rem; }
@@ -393,11 +309,10 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
 </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">
-    <img src="WhatsApp%20Image%202026-04-10%20at%2021.15.39.jpeg" alt="Miù Guest House" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+    <img src="Screenshot 2026-05-25 alle 16.38.36.png" alt="Miù Guest House" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
     <span class="nav-logo-text" style="display:none">Mi&ugrave; <span>B&amp;B</span></span>
   </a>
   <ul class="nav-links">
@@ -407,28 +322,28 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <li><a href="#servizi" class="nav-link">Servizi</a></li>
     <li><a href="#chisiamo" class="nav-link">Chi siamo</a></li>
     <li><a href="#contattaci" class="nav-link">Contattaci</a></li>
+    <li><a href="#prenota" class="nav-link" style="color:var(--gold);font-weight:600;">Prenota</a></li>
   </ul>
   <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-mobile" id="mobileMenu">
   <a href="#home">Home</a><a href="#camere">Camere</a><a href="#piscina">Piscina</a>
   <a href="#servizi">Servizi</a><a href="#chisiamo">Chi siamo</a><a href="#contattaci">Contattaci</a>
+  <a href="#prenota" style="color:var(--gold);font-weight:600;">Prenota</a>
 </div>
-
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Castelli Romani &nbsp;&middot;&nbsp; Ciampino, Roma</p>
+    <p class="hero-eyebrow">Ciampino &nbsp;&middot;&nbsp; Roma</p>
     <h1>Benvenuti al<br><em>Miù Bed and Breakfast</em></h1>
-    <p class="hero-desc">Una Guest House familiare immersa nel verde dei Colli Albani, a pochi minuti da Frascati e dal Lago di Albano. Sei camere, piscina privata e accoglienza autentica.</p>
+    <p class="hero-desc">Il punto ideale per vivere Roma e concedersi una visita ai suggestivi Castelli Romani. Sei camere, piscina privata e l'accoglienza autentica di Alessandro e Fabiana.</p>
     <div class="hero-actions">
       <a href="#contattaci" class="btn-white">Contattaci</a>
       <a href="#camere" class="btn-ghost-white">Scopri le camere</a>
     </div>
   </div>
 </section>
-
 <!-- HOME -->
 <section id="home">
   <div class="home-text">
@@ -441,7 +356,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
   </div>
   <div class="home-image"></div>
 </section>
-
 <!-- ZONA STRIP -->
 <div class="zona-strip">
   <div class="zona-item"><div class="zona-num">01</div><h4>Roma</h4><p>La Capitale a portata di mano: musei, Colosseo, Vaticano e la dolce vita romana.</p><p class="zona-dist">25 km &middot; 30 min</p></div>
@@ -449,7 +363,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
   <div class="zona-item"><div class="zona-num">03</div><h4>Lago di Albano</h4><p>Cratere vulcanico, passeggiate, kayak e tramonti indimenticabili.</p><p class="zona-dist">15 minuti</p></div>
   <div class="zona-item"><div class="zona-num">04</div><h4>Grottaferrata</h4><p>L'Abbazia greca, il borgo raccolto e la cucina laziale autentica.</p><p class="zona-dist">10 minuti</p></div>
 </div>
-
 <!-- CAMERE -->
 <section id="camere">
   <div class="camere-section-header">
@@ -460,10 +373,8 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <p>Ogni camera prende il nome da un borgo dei Castelli Romani. Clicca per scoprirla.</p>
   </div>
   <div class="rooms-grid">
-
-    <!-- MARINO -->
     <div class="room-card" onclick="openRoom('marino')">
-      <div class="room-card-photo"><div class="room-card-photo-inner rc1"><span class="ph">Foto camera Marino</span></div></div>
+      <div class="room-card-photo"><div class="room-card-photo-inner rc1"></div></div>
       <div class="room-card-body">
         <div class="room-card-tag">Camera Doppia &middot; Bagno Privato</div>
         <h3>Marino</h3>
@@ -471,10 +382,8 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <span class="room-card-link">Scopri la camera</span>
       </div>
     </div>
-
-    <!-- CASTEL GANDOLFO -->
     <div class="room-card" onclick="openRoom('castgandolfo')">
-      <div class="room-card-photo"><div class="room-card-photo-inner rc2"><span class="ph">Foto camera Castel Gandolfo</span></div></div>
+      <div class="room-card-photo"><div class="room-card-photo-inner rc2"></div></div>
       <div class="room-card-body">
         <div class="room-card-tag">Camera Quadrupla &middot; Bagno con Vasca Idromassaggio</div>
         <h3>Castel Gandolfo</h3>
@@ -482,10 +391,8 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <span class="room-card-link">Scopri la camera</span>
       </div>
     </div>
-
-    <!-- NEMI -->
     <div class="room-card" onclick="openRoom('nemi')">
-      <div class="room-card-photo"><div class="room-card-photo-inner rc3"><span class="ph">Foto camera Nemi</span></div></div>
+      <div class="room-card-photo"><div class="room-card-photo-inner rc3"></div></div>
       <div class="room-card-body">
         <div class="room-card-tag">Camera Doppia &middot; Bagno Privato</div>
         <h3>Nemi</h3>
@@ -493,10 +400,8 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <span class="room-card-link">Scopri la camera</span>
       </div>
     </div>
-
-    <!-- GENZANO -->
     <div class="room-card" onclick="openRoom('genzano')">
-      <div class="room-card-photo"><div class="room-card-photo-inner rc4"><span class="ph">Foto camera Genzano</span></div></div>
+      <div class="room-card-photo"><div class="room-card-photo-inner rc4"></div></div>
       <div class="room-card-body">
         <div class="room-card-tag">Camera Quadrupla &middot; Terrazzo Privato</div>
         <h3>Genzano</h3>
@@ -504,10 +409,8 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <span class="room-card-link">Scopri la camera</span>
       </div>
     </div>
-
-    <!-- ARICCIA -->
     <div class="room-card" onclick="openRoom('ariccia')">
-      <div class="room-card-photo"><div class="room-card-photo-inner rc5"><span class="ph">Foto camera Ariccia</span></div></div>
+      <div class="room-card-photo"><div class="room-card-photo-inner rc5"></div></div>
       <div class="room-card-body">
         <div class="room-card-tag">Camera Doppia &middot; Bagno Condiviso</div>
         <h3>Ariccia</h3>
@@ -515,10 +418,8 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <span class="room-card-link">Scopri la camera</span>
       </div>
     </div>
-
-    <!-- FRASCATI -->
     <div class="room-card" onclick="openRoom('frascati')">
-      <div class="room-card-photo"><div class="room-card-photo-inner rc6"><span class="ph">Foto camera Frascati</span></div></div>
+      <div class="room-card-photo"><div class="room-card-photo-inner rc6"></div></div>
       <div class="room-card-body">
         <div class="room-card-tag">Camera Elegante &middot; Terrazzo Privato</div>
         <h3>Frascati</h3>
@@ -526,15 +427,13 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <span class="room-card-link">Scopri la camera</span>
       </div>
     </div>
-
   </div>
 </section>
-
 <!-- MODAL MARINO -->
 <div class="room-modal" id="modal-marino">
   <div class="room-modal-box">
     <button class="room-modal-close" onclick="closeRoom('marino')">&times;</button>
-    <div class="room-modal-photo rc1"><span class="ph">Foto camera Marino</span></div>
+    <div class="room-modal-photo rc1"></div>
     <div class="room-modal-body">
       <div class="room-modal-meta"><span>Camera Doppia</span><span>Bagno Privato</span><span>Vista Piscina</span></div>
       <h2>Marino</h2>
@@ -552,12 +451,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </div>
-
 <!-- MODAL CASTEL GANDOLFO -->
 <div class="room-modal" id="modal-castgandolfo">
   <div class="room-modal-box">
     <button class="room-modal-close" onclick="closeRoom('castgandolfo')">&times;</button>
-    <div class="room-modal-photo rc2"><span class="ph">Foto camera Castel Gandolfo</span></div>
+    <div class="room-modal-photo rc2"></div>
     <div class="room-modal-body">
       <div class="room-modal-meta"><span>Camera Quadrupla</span><span>Bagno con Vasca Idromassaggio</span><span>Vista Piscina e Colli</span></div>
       <h2>Castel Gandolfo</h2>
@@ -575,16 +473,15 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </div>
-
 <!-- MODAL NEMI -->
 <div class="room-modal" id="modal-nemi">
   <div class="room-modal-box">
     <button class="room-modal-close" onclick="closeRoom('nemi')">&times;</button>
-    <div class="room-modal-photo rc3"><span class="ph">Foto camera Nemi</span></div>
+    <div class="room-modal-photo rc3"></div>
     <div class="room-modal-body">
       <div class="room-modal-meta"><span>Camera Doppia</span><span>Bagno Privato</span><span>Atmosfera Romantica</span></div>
       <h2>Nemi</h2>
-      <span class="room-modal-subtitle">Castelli Romani &middot; Ciampino</span>
+      <span class="room-modal-subtitle">Roma &middot; Castelli Romani &middot; Ciampino</span>
       <p>Come il piccolo borgo affacciato sul lago, la camera Nemi ha un'atmosfera raccolta e speciale. Adatta a chi vuole un soggiorno romantico nel verde dei Castelli, senza rinunciare al comfort.</p>
       <p>Le fragole di Nemi, famose in tutto il Lazio, sono spesso sulla tavola della nostra colazione.</p>
       <div class="room-modal-dotazioni">
@@ -598,12 +495,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </div>
-
 <!-- MODAL GENZANO -->
 <div class="room-modal" id="modal-genzano">
   <div class="room-modal-box">
     <button class="room-modal-close" onclick="closeRoom('genzano')">&times;</button>
-    <div class="room-modal-photo rc4"><span class="ph">Foto camera Genzano</span></div>
+    <div class="room-modal-photo rc4"></div>
     <div class="room-modal-body">
       <div class="room-modal-meta"><span>Camera Quadrupla</span><span>Terrazzo Privato</span><span>Ideale per Famiglie</span></div>
       <h2>Genzano</h2>
@@ -621,12 +517,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </div>
-
 <!-- MODAL ARICCIA -->
 <div class="room-modal" id="modal-ariccia">
   <div class="room-modal-box">
     <button class="room-modal-close" onclick="closeRoom('ariccia')">&times;</button>
-    <div class="room-modal-photo rc5"><span class="ph">Foto camera Ariccia</span></div>
+    <div class="room-modal-photo rc5"></div>
     <div class="room-modal-body">
       <div class="room-modal-meta"><span>Camera Doppia</span><span>Letti Singoli</span><span>Bagno Condiviso</span></div>
       <h2>Ariccia</h2>
@@ -644,12 +539,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </div>
-
 <!-- MODAL FRASCATI -->
 <div class="room-modal" id="modal-frascati">
   <div class="room-modal-box">
     <button class="room-modal-close" onclick="closeRoom('frascati')">&times;</button>
-    <div class="room-modal-photo rc6"><span class="ph">Foto camera Frascati</span></div>
+    <div class="room-modal-photo rc6"></div>
     <div class="room-modal-body">
       <div class="room-modal-meta"><span>Camera Elegante</span><span>Terrazzo Privato</span><span>Bagno Condiviso</span></div>
       <h2>Frascati</h2>
@@ -668,7 +562,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </div>
-
 <!-- PISCINA -->
 <section id="piscina">
   <div class="pool-photo"></div>
@@ -684,7 +577,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </ul>
   </div>
 </section>
-
 <!-- GALLERY -->
 <div class="gallery-strip">
   <div class="gs"><div class="gs-inner gs1"><span class="gs-label">Esterni</span></div></div>
@@ -693,7 +585,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
   <div class="gs"><div class="gs-inner gs4"><span class="gs-label">Colazione</span></div></div>
   <div class="gs"><div class="gs-inner gs5"><span class="gs-label">Giardino</span></div></div>
 </div>
-
 <!-- SERVIZI -->
 <section id="servizi">
   <div class="sec-header center">
@@ -740,14 +631,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </section>
-
-<!-- FOTO PRIMA DI CHI SIAMO -->
-<div style="width:100%; height:500px; overflow:hidden;">
-  <img src="la-tua-foto-qui.jpg" alt="Miù Bed and Breakfast" 
-       style="width:100%; height:100%; object-fit:cover; display:block;"
-       onerror="this.parentElement.style.background='linear-gradient(135deg,#0A1E3D,#1E52B8)'; this.style.display='none';">
-</div>
-
 <!-- CHI SIAMO -->
 <section id="chisiamo">
   <div class="chisiamo-image"></div>
@@ -766,7 +649,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <div class="signature">&mdash; Alessandro e Fabiana</div>
   </div>
 </section>
-
 <!-- CONTATTACI -->
 <section id="contattaci">
   <div class="sec-header center">
@@ -799,12 +681,26 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
       </div>
     </div>
     <div class="contattaci-map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2975.5!2d12.6129565!3d41.798415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1325890078dd757f%3A0xe55c7ebc616a6581!2sMi%C3%B9+Bed+and+Breakfast!5e0!3m2!1sit!2sit!4v1715000000001!5m2!1sit!2sit"
-        width="100%" height="100%" style="border:0; display:block; min-height:400px;"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2975.5!2d12.6129565!3d41.798415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1325890078dd757f%3A0xe55c7ebc616a6581!2sMi%C3%B9+Bed+and+Breakfast!5e0!3m2!1sit!2sit!4v1715000000001!5m2!1sit!2sit"
+        width="100%" height="100%" style="border:0; display:block; min-height:400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </div>
+  </div>
+</section>
+<!-- PRENOTA -->
+<section id="prenota" style="padding:7rem 5rem; background:var(--off-white);">
+  <div class="sec-header center">
+    <p class="section-label" style="justify-content:center;">Prenotazione diretta</p>
+    <h2>Prenota il tuo soggiorno</h2>
+    <p style="margin-top:1rem; font-size:0.9rem; font-weight:300; color:var(--text-light); max-width:480px; margin-inline:auto; line-height:1.9;">Verifica la disponibilit&agrave; e prenota direttamente, senza intermediari.</p>
+  </div>
+  <div style="max-width:900px; margin-inline:auto; border:1px solid var(--border); overflow:hidden;">
+    <iframe
+      src="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vOJysVfkVBx384GCmFqt4"
+      width="100%" height="700px"
+      style="border:0; display:block;"
+      loading="lazy">
+    </iframe>
   </div>
 </section>
 
@@ -841,18 +737,17 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </footer>
-
 <!-- MODALI LEGAL -->
 <div class="modal-overlay" id="modal-privacy">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('privacy')">&times;</button>
     <h2>Privacy Policy</h2><span class="modal-date">Aggiornamento: maggio 2026</span>
-    <h3>1. Titolare del trattamento</h3><p>Mi&ugrave; Guest House Srls, P. IVA 17838921009, Ciampino (Roma). Email: info@miubedbreakfast.it</p>
+    <h3>1. Titolare del trattamento</h3><p>Mi&ugrave; Guest House Srls, P. IVA 17838921009, Ciampino (Roma). Email: miubnbciampino@gmail.com</p>
     <h3>2. Dati raccolti</h3><p>Il sito raccoglie solo i dati forniti volontariamente (nome, email, telefono tramite contatti) e dati di navigazione tramite cookie tecnici e, previo consenso, analitici.</p>
     <h3>3. Finalit&agrave;</h3><p>Rispondere a richieste, gestire il rapporto contrattuale, analisi statistica anonima del traffico (solo con consenso).</p>
     <h3>4. Base giuridica</h3><p>Consenso dell'interessato (art. 6.1.a GDPR) ed esecuzione di un contratto (art. 6.1.b GDPR).</p>
     <h3>5. Conservazione</h3><p>I dati sono conservati per il tempo strettamente necessario e comunque non oltre 5 anni dalla cessazione del rapporto.</p>
-    <h3>6. Diritti</h3><p>In qualsiasi momento &egrave; possibile esercitare i diritti previsti dagli artt. 15-22 GDPR scrivendo a info@miubedbreakfast.it</p>
+    <h3>6. Diritti</h3><p>In qualsiasi momento &egrave; possibile esercitare i diritti previsti dagli artt. 15-22 GDPR scrivendo a miubnbciampino@gmail.com</p>
   </div>
 </div>
 <div class="modal-overlay" id="modal-cookie">
@@ -875,7 +770,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <h3>5. Legge applicabile</h3><p>I presenti termini sono regolati dalla legge italiana. Foro competente: Roma.</p>
   </div>
 </div>
-
 <!-- COOKIE BANNER -->
 <div id="cookie-banner">
   <p>Utilizziamo cookie tecnici necessari e, previo consenso, cookie analitici anonimi. Consulta la <a onclick="openModal('cookie');return false;">Cookie Policy</a>.</p>
@@ -884,47 +778,29 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <button class="btn-cookie-no" onclick="declineCookies()">Solo necessari</button>
   </div>
 </div>
-
 <script>
-// Nav
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 const burger = document.getElementById('burger');
 const mob = document.getElementById('mobileMenu');
 burger.addEventListener('click', () => { burger.classList.toggle('open'); mob.classList.toggle('open'); });
 mob.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { burger.classList.remove('open'); mob.classList.remove('open'); }));
-
-// Active link
 const sects = document.querySelectorAll('section[id]');
 const links = document.querySelectorAll('.nav-link');
 sects.forEach(s => new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { links.forEach(l => { l.classList.remove('active'); if(l.getAttribute('href')==='#'+e.target.id) l.classList.add('active'); }); }});
 }, {threshold:0.35}).observe(s));
-
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) {
   const t = document.querySelector(this.getAttribute('href'));
   if(t){ e.preventDefault(); window.scrollTo({top: t.getBoundingClientRect().top+window.scrollY-80, behavior:'smooth'}); }
 }));
-
-// Room modals
-function openRoom(id) {
-  document.getElementById('modal-'+id).classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeRoom(id) {
-  document.getElementById('modal-'+id).classList.remove('open');
-  document.body.style.overflow='';
-}
+function openRoom(id) { document.getElementById('modal-'+id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeRoom(id) { document.getElementById('modal-'+id).classList.remove('open'); document.body.style.overflow=''; }
 document.querySelectorAll('.room-modal').forEach(m => m.addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.body.style.overflow=''; }}));
-
-// Legal modals
 function openModal(id) { document.getElementById('modal-'+id).classList.add('open'); document.body.style.overflow='hidden'; }
 function closeModal(id) { document.getElementById('modal-'+id).classList.remove('open'); document.body.style.overflow=''; }
 document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', function(e){ if(e.target===this){ this.classList.remove('open'); document.body.style.overflow=''; }}));
 document.addEventListener('keydown', e => { if(e.key==='Escape'){ document.querySelectorAll('.room-modal.open,.modal-overlay.open').forEach(m=>{ m.classList.remove('open'); document.body.style.overflow=''; }); }});
-
-// Cookie
 window.addEventListener('load', () => { if(!localStorage.getItem('miu_cookie')) document.getElementById('cookie-banner').style.display='flex'; });
 function acceptCookies(){ localStorage.setItem('miu_cookie','ok'); document.getElementById('cookie-banner').style.display='none'; }
 function declineCookies(){ localStorage.setItem('miu_cookie','no'); document.getElementById('cookie-banner').style.display='none'; }
