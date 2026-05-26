@@ -158,16 +158,16 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .room-modal-close { position: absolute; top:1.2rem; right:1.2rem; z-index:1; background: rgba(255,255,255,0.9); border:1px solid var(--border); cursor:pointer; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--text-mid); transition:background 0.2s; }
 .room-modal-close:hover { background: var(--navy); color: var(--white); }
 .room-modal-photo { aspect-ratio: 16/7; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.room-modal-body { padding: 2.5rem 3rem 3rem; }
+.room-modal-body { padding: 1.5rem 2rem 2rem; }
 .room-modal-meta { display:flex; gap:2rem; margin-bottom:1.8rem; flex-wrap:wrap; }
 .room-modal-meta span { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--text-light); border-right:1px solid var(--border); padding-right:2rem; }
 .room-modal-meta span:last-child { border-right:none; }
-.room-modal-body h2 { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; color:var(--navy); margin-bottom:0.4rem; }
+.room-modal-body h2 { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:400; color:var(--navy); margin-bottom:0.3rem; }
 .room-modal-body .room-modal-subtitle { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500; color:var(--gold); margin-bottom:1.5rem; display:block; }
 .room-modal-body p { font-size:0.88rem; font-weight:300; line-height:2; color:var(--text-mid); margin-bottom:0.8rem; }
 .room-modal-dotazioni { margin-top:1.8rem; }
 .room-modal-dotazioni h4 { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--navy); margin-bottom:1rem; }
-.dotazioni-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; }
+.dotazioni-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.4rem; }
 .dotazione { font-size:0.78rem; font-weight:300; color:var(--text-light); display:flex; align-items:center; gap:0.4rem; }
 .dotazione::before { content:''; display:block; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
 #piscina { display:grid; grid-template-columns:1fr 1fr; min-height:520px; }
@@ -200,7 +200,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .servizio-list li { font-size:0.78rem; font-weight:300; color:var(--text-light); line-height:1.6; display:flex; align-items:baseline; gap:0.5rem; }
 .servizio-list li::before { content:'—'; color:var(--border); font-size:0.55rem; flex-shrink:0; }
 #chisiamo { padding:7rem 5rem; background:var(--off-white); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
-.chisiamo-image { aspect-ratio:4/5; background: url('WhatsApp Image 2026-05-15 at 11.39.17.jpeg') center/cover; display:flex; align-items:center; justify-content:center; }
+.chisiamo-image { aspect-ratio:4/5; background: url('WhatsApp%20Image%202026-05-15%20at%2011.39.17.jpeg') center/cover; display:flex; align-items:center; justify-content:center; }
 .chisiamo-text h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; line-height:1.2; color:var(--navy); margin-bottom:1.5rem; }
 .chisiamo-text h2 em { font-style:italic; color:var(--gold); }
 .chisiamo-text p { font-size:0.88rem; font-weight:300; line-height:2; color:var(--text-light); margin-bottom:0.8rem; }
@@ -306,13 +306,21 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
   .room-modal-meta span { padding-right:1rem; font-size:0.6rem; }
   .dotazioni-grid { grid-template-columns:1fr; }
 }
+.btn-prenota {
+  display: inline-block; margin-top: 1.5rem;
+  background: var(--navy); color: var(--white);
+  padding: 0.85rem 2rem; text-decoration: none;
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+  transition: background 0.3s;
+}
+.btn-prenota:hover { background: var(--gold); color: var(--navy); }
 </style>
 </head>
 <body>
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">
-    <img src="Screenshot 2026-05-25 alle 16.38.36.png" alt="Miù Guest House" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+    <img src="WhatsApp%20Image%202026-04-10%20at%2021.15.39.jpeg" alt="Miù Guest House" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
     <span class="nav-logo-text" style="display:none">Mi&ugrave; <span>B&amp;B</span></span>
   </a>
   <ul class="nav-links">
@@ -448,6 +456,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
           <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Vista piscina</span><span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
+      <a href="https://booking.vikey.it/userlisting/sgYdoqlm3BBwXO1x-ozQk-jLJ25gKjM4x384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
     </div>
   </div>
 </div>
@@ -470,6 +479,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
           <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Vista piscina e colli</span><span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
+      <a href="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vJJwcKW0Rlx384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
     </div>
   </div>
 </div>
@@ -492,6 +502,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
           <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Luce naturale</span><span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
+      <a href="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vIJ2c0c3dbx384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
     </div>
   </div>
 </div>
@@ -514,6 +525,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
           <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Aria condizionata</span><span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
+      <a href="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vPJxA4bFBYx384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
     </div>
   </div>
 </div>
@@ -536,6 +548,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
           <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Biancheria inclusa</span><span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
+      <a href="https://booking.vikey.it/userlisting/sgYdoqlm3BBwXO1x-ozQk-jLJ25gKjM4x384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
     </div>
   </div>
 </div>
@@ -559,6 +572,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
           <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Biancheria premium</span><span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
+      <a href="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vNJzsAIk18x384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
     </div>
   </div>
 </div>
@@ -687,23 +701,6 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     </div>
   </div>
 </section>
-<!-- PRENOTA -->
-<section id="prenota" style="padding:7rem 5rem; background:var(--off-white);">
-  <div class="sec-header center">
-    <p class="section-label" style="justify-content:center;">Prenotazione diretta</p>
-    <h2>Prenota il tuo soggiorno</h2>
-    <p style="margin-top:1rem; font-size:0.9rem; font-weight:300; color:var(--text-light); max-width:480px; margin-inline:auto; line-height:1.9;">Verifica la disponibilit&agrave; e prenota direttamente, senza intermediari.</p>
-  </div>
-  <div style="max-width:900px; margin-inline:auto; border:1px solid var(--border); overflow:hidden;">
-    <iframe
-      src="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vOJysVfkVBx384GCmFqt4"
-      width="100%" height="700px"
-      style="border:0; display:block;"
-      loading="lazy">
-    </iframe>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-main">
