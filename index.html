@@ -68,6 +68,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
   padding: 0.9rem 0; border-bottom: 1px solid var(--border); transition: color 0.3s;
 }
 .nav-mobile a:hover { color: var(--navy); }
+/* HERO */
 .hero {
   position: relative; height: 100vh; min-height: 600px;
   display: flex; align-items: center; justify-content: center; overflow: hidden;
@@ -83,8 +84,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 }
 .hero-content {
   position: relative; z-index: 2; padding: 0 5rem; max-width: 780px; width: 100%;
-  text-align: center;
-  animation: fadeUp 1s 0.15s ease both;
+  text-align: center; animation: fadeUp 1s 0.15s ease both;
 }
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 .hero-eyebrow {
@@ -113,21 +113,23 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .section-label.gold { color: var(--gold); }
 .section-label.gold::before { background: var(--gold); }
 .ph { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.2); border: 1px dashed rgba(255,255,255,0.15); padding: 0.45rem 0.9rem; font-family: 'Raleway', sans-serif; }
-.ph.on-light { color: rgba(13,34,64,0.2); border-color: rgba(13,34,64,0.15); }
+/* HOME */
 #home { padding: 6rem 5rem; background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
 .home-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem,3.2vw,2.8rem); font-weight: 400; line-height: 1.2; color: var(--navy); margin-bottom: 1.4rem; }
 .home-text h2 em { font-style: italic; color: var(--gold); }
 .home-text p { font-size: 0.9rem; font-weight: 300; line-height: 2; color: var(--text-light); margin-bottom: 0.8rem; }
 .home-text .signature { margin-top: 1.8rem; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 1rem; color: var(--gold); }
 .home-image { aspect-ratio: 4/3; background: url('WhatsApp%20Image%202026-04-10%20at%2021.15.40.jpeg') center/cover; display: flex; align-items: center; justify-content: center; }
+/* ZONA STRIP */
 .zona-strip { background: var(--navy); padding: 3.5rem 5rem; display: grid; grid-template-columns: repeat(4,1fr); }
-.zona-item { padding: 0 2rem 0 0; border-right: 1px solid rgba(255,255,255,0.08); transition: background 0.3s; }
+.zona-item { padding: 0 2rem 0 0; border-right: 1px solid rgba(255,255,255,0.08); }
 .zona-item:last-child { border-right: none; padding-right: 0; padding-left: 2rem; }
 .zona-item:nth-child(2), .zona-item:nth-child(3) { padding: 0 2rem; }
 .zona-num { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:400; color:rgba(184,151,90,0.2); line-height:1; margin-bottom:0.6rem; }
 .zona-item h4 { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:400; color:var(--gold-light); margin-bottom:0.3rem; }
 .zona-item p { font-size:0.75rem; font-weight:300; color:rgba(255,255,255,0.45); line-height:1.7; }
 .zona-dist { margin-top:0.5rem; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(184,151,90,0.5); font-weight:500; }
+/* CAMERE */
 #camere { padding: 7rem 5rem; background: var(--off-white); }
 .camere-section-header { margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; }
 .camere-section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; color:var(--navy); }
@@ -151,25 +153,29 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .room-card-link { font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--navy); display:inline-flex; align-items:center; gap:0.4rem; transition: gap 0.3s, color 0.3s; }
 .room-card:hover .room-card-link { gap:0.7rem; color:var(--gold); }
 .room-card-link::after { content:'→'; }
+/* MODAL CAMERA */
 .room-modal { display: none; position: fixed; inset:0; z-index:400; background: rgba(10,24,40,0.7); backdrop-filter: blur(6px); align-items: flex-start; justify-content: center; padding: 2rem; overflow-y: auto; }
 .room-modal.open { display: flex; }
-.room-modal-box { background: var(--white); width: 100%; max-width: 860px; position: relative; animation: modalIn 0.35s ease both; margin: auto; }
+.room-modal-box { background: var(--white); width: 100%; max-width: 640px; position: relative; animation: modalIn 0.35s ease both; margin: auto; }
 @keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 .room-modal-close { position: absolute; top:1.2rem; right:1.2rem; z-index:1; background: rgba(255,255,255,0.9); border:1px solid var(--border); cursor:pointer; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--text-mid); transition:background 0.2s; }
 .room-modal-close:hover { background: var(--navy); color: var(--white); }
-.room-modal-photo { aspect-ratio: 16/7; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.room-modal-photo { aspect-ratio: 16/6; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .room-modal-body { padding: 1.5rem 2rem 2rem; }
-.room-modal-meta { display:flex; gap:2rem; margin-bottom:1.8rem; flex-wrap:wrap; }
-.room-modal-meta span { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--text-light); border-right:1px solid var(--border); padding-right:2rem; }
+.room-modal-meta { display:flex; gap:1.5rem; margin-bottom:1.2rem; flex-wrap:wrap; }
+.room-modal-meta span { font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--text-light); border-right:1px solid var(--border); padding-right:1.5rem; }
 .room-modal-meta span:last-child { border-right:none; }
 .room-modal-body h2 { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:400; color:var(--navy); margin-bottom:0.3rem; }
-.room-modal-body .room-modal-subtitle { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500; color:var(--gold); margin-bottom:1.5rem; display:block; }
-.room-modal-body p { font-size:0.88rem; font-weight:300; line-height:2; color:var(--text-mid); margin-bottom:0.8rem; }
-.room-modal-dotazioni { margin-top:1.8rem; }
-.room-modal-dotazioni h4 { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--navy); margin-bottom:1rem; }
+.room-modal-body .room-modal-subtitle { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500; color:var(--gold); margin-bottom:1rem; display:block; }
+.room-modal-body p { font-size:0.85rem; font-weight:300; line-height:1.9; color:var(--text-mid); margin-bottom:0.6rem; }
+.room-modal-dotazioni { margin-top:1.2rem; }
+.room-modal-dotazioni h4 { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--navy); margin-bottom:0.8rem; }
 .dotazioni-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.4rem; }
-.dotazione { font-size:0.78rem; font-weight:300; color:var(--text-light); display:flex; align-items:center; gap:0.4rem; }
+.dotazione { font-size:0.75rem; font-weight:300; color:var(--text-light); display:flex; align-items:center; gap:0.4rem; }
 .dotazione::before { content:''; display:block; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+.btn-prenota { display:inline-block; margin-top:1.5rem; background:var(--navy); color:var(--white); padding:0.85rem 2rem; text-decoration:none; font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:600; transition:background 0.3s; }
+.btn-prenota:hover { background:var(--gold); color:var(--navy); }
+/* PISCINA */
 #piscina { display:grid; grid-template-columns:1fr 1fr; min-height:520px; }
 .pool-photo { background: url('WhatsApp%20Image%202026-04-10%20at%2021.15.41.jpeg') center/cover; display:flex; align-items:center; justify-content:center; min-height:460px; }
 .pool-text { background:var(--navy); padding:5.5rem 5rem; display:flex; flex-direction:column; justify-content:center; }
@@ -179,6 +185,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .pool-list { margin-top:1.8rem; list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:0.55rem; }
 .pool-list li { font-size:0.78rem; font-weight:300; color:rgba(255,255,255,0.7); display:flex; align-items:center; gap:0.5rem; }
 .pool-list li::before { content:''; display:block; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+/* GALLERY */
 .gallery-strip { display:grid; grid-template-columns:repeat(5,1fr); height:240px; gap:2px; }
 .gs { overflow:hidden; display:flex; align-items:center; justify-content:center; cursor:pointer; }
 .gs-inner { width:100%; height:100%; transition:transform 0.5s ease; display:flex; align-items:center; justify-content:center; }
@@ -189,6 +196,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .gs4 { background: url('Screenshot%202026-04-27%20alle%2015.57.00.png') center/cover; }
 .gs5 { background: url('WhatsApp%20Image%202026-04-10%20at%2021.15.40.jpeg') center/cover; }
 .gs-label { font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.18); font-family:'Raleway',sans-serif; }
+/* SERVIZI */
 #servizi { padding:7rem 5rem; background:var(--white); }
 .servizi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--border); }
 .servizio-card { padding:2.8rem 2.4rem; border-right:1px solid var(--border); transition:background 0.3s; }
@@ -199,6 +207,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .servizio-list { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
 .servizio-list li { font-size:0.78rem; font-weight:300; color:var(--text-light); line-height:1.6; display:flex; align-items:baseline; gap:0.5rem; }
 .servizio-list li::before { content:'—'; color:var(--border); font-size:0.55rem; flex-shrink:0; }
+/* CHI SIAMO */
 #chisiamo { padding:7rem 5rem; background:var(--off-white); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
 .chisiamo-image { aspect-ratio:4/5; background: url('WhatsApp%20Image%202026-05-15%20at%2011.39.17.jpeg') center/cover; display:flex; align-items:center; justify-content:center; }
 .chisiamo-text h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; line-height:1.2; color:var(--navy); margin-bottom:1.5rem; }
@@ -209,6 +218,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .valore { padding:1.2rem; border:1px solid var(--border); background:var(--white); }
 .valore h4 { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; color:var(--navy); margin-bottom:0.3rem; }
 .valore p { font-size:0.75rem; font-weight:300; color:var(--text-light); line-height:1.6; }
+/* CONTATTACI */
 #contattaci { padding:7rem 5rem; background:var(--white); }
 .contattaci-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; margin-top:3rem; }
 .contattaci-info h3 { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:400; color:var(--navy); margin-bottom:2rem; }
@@ -229,6 +239,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .sec-header h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:400; color:var(--navy); margin-top:0.3rem; }
 .sec-header.center { text-align:center; }
 .sec-header.center .section-label { justify-content:center; }
+/* FOOTER */
 footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 5rem 0; }
 .footer-main { display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,0.07); }
 .footer-logo { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; letter-spacing:0.08em; color:var(--white); text-decoration:none; display:block; margin-bottom:0.8rem; }
@@ -243,6 +254,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
 .footer-legal { display:flex; gap:1.5rem; flex-wrap:wrap; }
 .footer-legal a { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:400; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.3s; }
 .footer-legal a:hover { color:var(--gold-light); }
+/* MODALI LEGAL */
 .modal-overlay { display:none; position:fixed; inset:0; z-index:500; background:rgba(10,24,40,0.8); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:2rem; }
 .modal-overlay.open { display:flex; }
 .modal-box { background:var(--white); max-width:700px; width:100%; max-height:80vh; overflow-y:auto; padding:3rem; position:relative; animation:modalIn 0.3s ease both; }
@@ -254,6 +266,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
 .modal-box p { font-size:0.82rem; font-weight:300; line-height:1.9; color:var(--text-mid); margin-bottom:0.6rem; }
 .modal-box ul { margin:0.3rem 0 0.7rem 1rem; }
 .modal-box ul li { font-size:0.82rem; font-weight:300; line-height:1.9; color:var(--text-mid); }
+/* COOKIE */
 #cookie-banner { display:none; position:fixed; bottom:0; left:0; right:0; z-index:350; background:var(--navy); border-top:2px solid var(--gold); padding:1.2rem 4rem; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; }
 #cookie-banner p { font-size:0.78rem; font-weight:300; color:rgba(255,255,255,0.7); line-height:1.7; max-width:660px; }
 #cookie-banner p a { color:var(--gold-light); text-decoration:underline; cursor:pointer; }
@@ -262,11 +275,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
 .btn-cookie-ok:hover { background:var(--gold-light); }
 .btn-cookie-no { background:transparent; color:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.2); cursor:pointer; padding:0.6rem 1.1rem; font-family:'Raleway',sans-serif; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:400; transition:color 0.3s; }
 .btn-cookie-no:hover { color:var(--white); }
+/* RESPONSIVE */
 @media (max-width:960px) {
   nav { padding:0 1.5rem; }
   .nav-links { display:none; }
   .nav-burger { display:flex; }
-  .hero { margin-top:80px; }
   .hero-content { padding:0 1.8rem; }
   #home { grid-template-columns:1fr; padding:4rem 1.5rem; gap:2.5rem; }
   .home-image { aspect-ratio:16/9; }
@@ -292,7 +305,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
   .footer-main { grid-template-columns:1fr; gap:2rem; padding-bottom:2rem; }
   .footer-bottom { flex-direction:column; align-items:flex-start; }
   #cookie-banner { padding:1.2rem 1.5rem; }
-  .room-modal-body { padding:1.8rem 1.5rem 2.5rem; }
+  .room-modal-body { padding:1.5rem; }
   .dotazioni-grid { grid-template-columns:1fr 1fr; }
   .valori { grid-template-columns:1fr; }
   .pool-list { grid-template-columns:1fr; }
@@ -302,18 +315,10 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
   .zona-strip { grid-template-columns:1fr; }
   .gallery-strip { grid-template-columns:1fr 1fr; }
   .gs:nth-child(3) { display:none; }
-  .room-modal-meta { gap:1rem; }
-  .room-modal-meta span { padding-right:1rem; font-size:0.6rem; }
+  .room-modal-meta { gap:0.8rem; }
+  .room-modal-meta span { padding-right:0.8rem; font-size:0.58rem; }
   .dotazioni-grid { grid-template-columns:1fr; }
 }
-.btn-prenota {
-  display: inline-block; margin-top: 1.5rem;
-  background: var(--navy); color: var(--white);
-  padding: 0.85rem 2rem; text-decoration: none;
-  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
-  transition: background 0.3s;
-}
-.btn-prenota:hover { background: var(--gold); color: var(--navy); }
 </style>
 </head>
 <body>
@@ -330,14 +335,14 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <li><a href="#servizi" class="nav-link">Servizi</a></li>
     <li><a href="#chisiamo" class="nav-link">Chi siamo</a></li>
     <li><a href="#contattaci" class="nav-link">Contattaci</a></li>
-    <li><a href="#prenota" class="nav-link" style="color:var(--gold);font-weight:600;">Prenota</a></li>
+    <li><a href="#camere" class="nav-link" style="color:var(--gold);font-weight:600;">Prenota</a></li>
   </ul>
   <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-mobile" id="mobileMenu">
   <a href="#home">Home</a><a href="#camere">Camere</a><a href="#piscina">Piscina</a>
   <a href="#servizi">Servizi</a><a href="#chisiamo">Chi siamo</a><a href="#contattaci">Contattaci</a>
-  <a href="#prenota" style="color:var(--gold);font-weight:600;">Prenota</a>
+  <a href="#camere" style="color:var(--gold);font-weight:600;">Prenota</a>
 </div>
 <!-- HERO -->
 <section class="hero">
@@ -378,7 +383,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
       <p class="section-label">Le nostre camere</p>
       <h2>Sei camere, ognuna con il suo carattere</h2>
     </div>
-    <p>Ogni camera prende il nome da un borgo dei Castelli Romani. Clicca per scoprirla.</p>
+    <p>Ogni camera prende il nome da un borgo dei Castelli Romani. Clicca per scoprirla e prenotare.</p>
   </div>
   <div class="rooms-grid">
     <div class="room-card" onclick="openRoom('marino')">
@@ -393,7 +398,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <div class="room-card" onclick="openRoom('castgandolfo')">
       <div class="room-card-photo"><div class="room-card-photo-inner rc2"></div></div>
       <div class="room-card-body">
-        <div class="room-card-tag">Camera Quadrupla &middot; Bagno con Vasca Idromassaggio</div>
+        <div class="room-card-tag">Camera Quadrupla &middot; Vasca Idromassaggio</div>
         <h3>Castel Gandolfo</h3>
         <p>Quadrupla con letti a castello, vista piscina e colli. Bagno con vasca idromassaggio.</p>
         <span class="room-card-link">Scopri la camera</span>
@@ -451,9 +456,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
       <div class="room-modal-dotazioni">
         <h4>Dotazioni</h4>
         <div class="dotazioni-grid">
-          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Aria condizionata</span>
-          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
-          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Vista piscina</span><span class="dotazione">Colazione inclusa</span>
+          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno privato con doccia</span>
+          <span class="dotazione">Aria condizionata</span><span class="dotazione">Wi-Fi gratuito</span>
+          <span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Vista piscina</span>
+          <span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
       <a href="https://booking.vikey.it/userlisting/sgYdoqlm3BBwXO1x-ozQk-jLJ25gKjM4x384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
@@ -466,7 +473,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <button class="room-modal-close" onclick="closeRoom('castgandolfo')">&times;</button>
     <div class="room-modal-photo rc2"></div>
     <div class="room-modal-body">
-      <div class="room-modal-meta"><span>Camera Quadrupla</span><span>Bagno con Vasca Idromassaggio</span><span>Vista Piscina e Colli</span></div>
+      <div class="room-modal-meta"><span>Camera Quadrupla</span><span>Vasca Idromassaggio</span><span>Vista Piscina</span></div>
       <h2>Castel Gandolfo</h2>
       <span class="room-modal-subtitle">Roma &middot; Castelli Romani &middot; Ciampino</span>
       <p>Spaziosa e ideale per famiglie o gruppi, la camera Castel Gandolfo dispone di letti a castello ed &egrave; affacciata sulla piscina e sul verde dei Colli Albani. Il bagno privato con vasca idromassaggio la rende una scelta speciale per chi cerca un tocco di relax in pi&ugrave;.</p>
@@ -474,9 +481,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
       <div class="room-modal-dotazioni">
         <h4>Dotazioni</h4>
         <div class="dotazioni-grid">
-          <span class="dotazione">Letti a castello (4 posti)</span><span class="dotazione">Bagno privato con vasca idromassaggio</span><span class="dotazione">Aria condizionata</span>
-          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
-          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Vista piscina e colli</span><span class="dotazione">Colazione inclusa</span>
+          <span class="dotazione">Letti a castello (4 posti)</span><span class="dotazione">Vasca idromassaggio</span>
+          <span class="dotazione">Aria condizionata</span><span class="dotazione">Wi-Fi gratuito</span>
+          <span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Vista piscina e colli</span>
+          <span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
       <a href="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vJJwcKW0Rlx384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
@@ -497,9 +506,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
       <div class="room-modal-dotazioni">
         <h4>Dotazioni</h4>
         <div class="dotazioni-grid">
-          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Aria condizionata</span>
-          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
-          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Luce naturale</span><span class="dotazione">Colazione inclusa</span>
+          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno privato con doccia</span>
+          <span class="dotazione">Aria condizionata</span><span class="dotazione">Wi-Fi gratuito</span>
+          <span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Luce naturale</span>
+          <span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
       <a href="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vIJ2c0c3dbx384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
@@ -512,7 +523,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
     <button class="room-modal-close" onclick="closeRoom('genzano')">&times;</button>
     <div class="room-modal-photo rc4"></div>
     <div class="room-modal-body">
-      <div class="room-modal-meta"><span>Camera Quadrupla</span><span>Terrazzo Privato</span><span>Ideale per Famiglie</span></div>
+      <div class="room-modal-meta"><span>Camera Quadrupla</span><span>Terrazzo Privato</span><span>Famiglie</span></div>
       <h2>Genzano</h2>
       <span class="room-modal-subtitle">Roma &middot; Castelli Romani &middot; Ciampino</span>
       <p>Ampia e luminosa, la camera Genzano &egrave; ideale per famiglie o gruppi. Dispone di letti a castello e di un terrazzo privato dove godersi l'aria dei Castelli Romani in totale relax.</p>
@@ -520,9 +531,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
       <div class="room-modal-dotazioni">
         <h4>Dotazioni</h4>
         <div class="dotazioni-grid">
-          <span class="dotazione">Letti a castello (4 posti)</span><span class="dotazione">Bagno privato con doccia</span><span class="dotazione">Terrazzo privato</span>
-          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
-          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Aria condizionata</span><span class="dotazione">Colazione inclusa</span>
+          <span class="dotazione">Letti a castello (4 posti)</span><span class="dotazione">Bagno privato con doccia</span>
+          <span class="dotazione">Terrazzo privato</span><span class="dotazione">Wi-Fi gratuito</span>
+          <span class="dotazione">Smart TV</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Aria condizionata</span>
+          <span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
       <a href="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vPJxA4bFBYx384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
@@ -543,9 +556,11 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
       <div class="room-modal-dotazioni">
         <h4>Dotazioni</h4>
         <div class="dotazioni-grid">
-          <span class="dotazione">2 letti singoli</span><span class="dotazione">Bagno condiviso con doccia</span><span class="dotazione">Aria condizionata</span>
-          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Scrivania</span>
-          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Biancheria inclusa</span><span class="dotazione">Colazione inclusa</span>
+          <span class="dotazione">2 letti singoli</span><span class="dotazione">Bagno condiviso con doccia</span>
+          <span class="dotazione">Aria condizionata</span><span class="dotazione">Wi-Fi gratuito</span>
+          <span class="dotazione">Smart TV</span><span class="dotazione">Scrivania</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Biancheria inclusa</span>
+          <span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
       <a href="https://booking.vikey.it/userlisting/sgYdoqlm3BBwXO1x-ozQk-jLJ25gKjM4x384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
@@ -562,14 +577,16 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
       <h2>Frascati</h2>
       <span class="room-modal-subtitle">Roma &middot; Castelli Romani &middot; Ciampino</span>
       <p>Elegante, luminosa e curata in ogni dettaglio, la Frascati &egrave; la camera ideale per chi desidera un soggiorno confortevole a pochi minuti da Roma e nel cuore dei Castelli Romani.</p>
-      <p>Ispirata all'atmosfera raffinata di Frascati, unisce colori vivaci, spazi ampi e un ambiente rilassante con terrazzo privato, perfetto sia per una vacanza che per un soggiorno di lavoro. Un piccolo angolo di tranquillit&agrave; dove sentirsi accolti, tra stile, comodit&agrave; e ospitalit&agrave; autentica.</p>
+      <p>Ispirata all'atmosfera raffinata di Frascati, unisce colori vivaci, spazi ampi e un ambiente rilassante con terrazzo privato, perfetto sia per una vacanza che per un soggiorno di lavoro.</p>
       <p style="font-size:0.78rem;color:var(--text-light);font-style:italic;">Il bagno &egrave; condiviso con la camera adiacente.</p>
       <div class="room-modal-dotazioni">
         <h4>Dotazioni</h4>
         <div class="dotazioni-grid">
-          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno condiviso con doccia</span><span class="dotazione">Terrazzo privato</span>
-          <span class="dotazione">Wi-Fi gratuito</span><span class="dotazione">Smart TV</span><span class="dotazione">Zona relax</span>
-          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Biancheria premium</span><span class="dotazione">Colazione inclusa</span>
+          <span class="dotazione">Letto matrimoniale</span><span class="dotazione">Bagno condiviso con doccia</span>
+          <span class="dotazione">Terrazzo privato</span><span class="dotazione">Wi-Fi gratuito</span>
+          <span class="dotazione">Smart TV</span><span class="dotazione">Zona relax</span>
+          <span class="dotazione">Pulizia giornaliera</span><span class="dotazione">Biancheria premium</span>
+          <span class="dotazione">Colazione inclusa</span>
         </div>
       </div>
       <a href="https://booking.vikey.it/?local_key=sgYdoqlm3BBwXO1x-ozQk4vNJzsAIk18x384GCmFqt4" target="_blank" class="btn-prenota">Prenota questa camera</a>
