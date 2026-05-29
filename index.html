@@ -150,9 +150,14 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(13,34,64,0.08); }
 .room-card-tag { font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--gold); margin-bottom:0.4rem; }
 .room-card-body h3 { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; color:var(--navy); margin-bottom:0.5rem; }
 .room-card-body p { font-size:0.78rem; font-weight:300; color:var(--text-light); line-height:1.7; margin-bottom:1.2rem; }
-.room-card-link { font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; color:var(--navy); display:inline-flex; align-items:center; gap:0.4rem; transition: gap 0.3s, color 0.3s; }
-.room-card:hover .room-card-link { gap:0.7rem; color:var(--gold); }
-.room-card-link::after { content:'→'; }
+.room-card-link {
+  font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600;
+  color:var(--white); background:var(--navy);
+  display:inline-block; padding:0.7rem 1.4rem;
+  transition: background 0.3s;
+}
+.room-card:hover .room-card-link { background:var(--gold); color:var(--navy); }
+.room-card-link::after { content:''; }
 /* MODAL CAMERA */
 .room-modal { display: none; position: fixed; inset:0; z-index:400; background: rgba(10,24,40,0.7); backdrop-filter: blur(6px); align-items: flex-start; justify-content: center; padding: 2rem; overflow-y: auto; }
 .room-modal.open { display: flex; }
@@ -392,7 +397,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <div class="room-card-tag">Camera Doppia &middot; Bagno Privato</div>
         <h3>Marino</h3>
         <p>Spaziosa e luminosa, con vista sulla piscina. Ideale per coppie.</p>
-        <span class="room-card-link">Scopri la camera</span>
+        <span class="room-card-link">Scopri e prenota</span>
       </div>
     </div>
     <div class="room-card" onclick="openRoom('castgandolfo')">
@@ -401,7 +406,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <div class="room-card-tag">Camera Quadrupla &middot; Vasca Idromassaggio</div>
         <h3>Castel Gandolfo</h3>
         <p>Quadrupla con letti a castello, vista piscina e colli. Bagno con vasca idromassaggio.</p>
-        <span class="room-card-link">Scopri la camera</span>
+        <span class="room-card-link">Scopri e prenota</span>
       </div>
     </div>
     <div class="room-card" onclick="openRoom('nemi')">
@@ -410,7 +415,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <div class="room-card-tag">Camera Doppia &middot; Bagno Privato</div>
         <h3>Nemi</h3>
         <p>Atmosfera raccolta e romantica, perfetta per un soggiorno di coppia.</p>
-        <span class="room-card-link">Scopri la camera</span>
+        <span class="room-card-link">Scopri e prenota</span>
       </div>
     </div>
     <div class="room-card" onclick="openRoom('genzano')">
@@ -419,7 +424,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <div class="room-card-tag">Camera Quadrupla &middot; Terrazzo Privato</div>
         <h3>Genzano</h3>
         <p>Quadrupla con letti a castello e terrazzo privato. Perfetta per famiglie.</p>
-        <span class="room-card-link">Scopri la camera</span>
+        <span class="room-card-link">Scopri e prenota</span>
       </div>
     </div>
     <div class="room-card" onclick="openRoom('ariccia')">
@@ -428,7 +433,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <div class="room-card-tag">Camera Doppia &middot; Bagno Condiviso</div>
         <h3>Ariccia</h3>
         <p>Camera doppia con letti singoli, adatta a tutti. Bagno condiviso con la camera adiacente.</p>
-        <span class="room-card-link">Scopri la camera</span>
+        <span class="room-card-link">Scopri e prenota</span>
       </div>
     </div>
     <div class="room-card" onclick="openRoom('frascati')">
@@ -437,7 +442,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:4rem 
         <div class="room-card-tag">Camera Elegante &middot; Terrazzo Privato</div>
         <h3>Frascati</h3>
         <p>Elegante e luminosa con terrazzo privato. Ideale per vacanza o lavoro a pochi minuti da Roma.</p>
-        <span class="room-card-link">Scopri la camera</span>
+        <span class="room-card-link">Scopri e prenota</span>
       </div>
     </div>
   </div>
